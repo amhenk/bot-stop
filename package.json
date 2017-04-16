@@ -8,14 +8,19 @@
     "start": "node app"
   },
   "dependencies": {
-    "express":"*",
-    "mongoose":"*",
-    "bcryptjs":"*",
-    "cors":"*",
-    "jsonwebtoken":"*",
-    "body-parser":"*",
-    "passport":"*",
-    "passport-jwt":"*"
+    "angular-animate": "^1.6.4",
+    "angular-touch": "^1.6.4",
+    "angular-ui-bootstrap": "^2.5.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jquery": "^3.2.1",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "normalize.css": "^6.0.0",
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "author": "Alex Henkemeier",
   "license": "ISC"
