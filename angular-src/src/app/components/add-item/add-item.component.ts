@@ -4,6 +4,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 // import { FormGroup } from '@angular/forms';
 
+/*
+  TODO:
+    - Have form clear fields instead of redirect to root
+ */
+
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',

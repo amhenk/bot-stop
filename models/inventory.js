@@ -34,6 +34,10 @@ const ItemSchema = mongoose.Schema({
 
 const Inventory = module.exports = mongoose.model('Inventory', ItemSchema);
 
+module.exports.deleteItemById = function(id, callback) {
+  Inventory.findById(id).remove(callback);
+}
+
 module.exports.getAllItems = function(callback) {
   Inventory.find({}, callback);
 }

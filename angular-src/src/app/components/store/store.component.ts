@@ -15,6 +15,7 @@ export class StoreComponent implements OnInit {
     this.inventory.getAllItems().subscribe(inventory => {
       this.items = inventory;
       console.log('Items retrieved');
+      console.log(this.items);
     },
     err => {
       console.log('No items found');

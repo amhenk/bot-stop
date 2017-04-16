@@ -53,4 +53,14 @@ router.post('/addItem', (req, res, next) => {
   });
 });
 
+router.delete('/removeitem', (req, res, next) => {
+  inventory.deleteItemById(req.body._id, (err, item) => {
+    if(err) {
+      return done(err, false);
+    }
+    res.json({success: true, msg: "Item removed"});
+
+  });
+});
+
 module.exports = router;
