@@ -8,6 +8,7 @@ import { ItemService } from '../../services/item.service';
 })
 export class StoreComponent implements OnInit {
   items: Object[] = [];
+  categories: string[] =[];
 
   constructor(private inventory: ItemService) { }
 
