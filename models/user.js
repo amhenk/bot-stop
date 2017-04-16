@@ -42,7 +42,7 @@ module.exports.addUser = function(newUser, callback){
       if(err) throw err;
       newUser.password = hast;
       newUser.save(callback);
-    })
+    });
   });
 }
 

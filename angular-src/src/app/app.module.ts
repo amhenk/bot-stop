@@ -13,11 +13,16 @@ import { LoginComponent } from './components/login/login.component';
 import { ItemComponent } from './components/item/item.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 
+import { ItemService } from './services/item.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AddItemComponent } from './components/add-item/add-item.component';
+
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'store', component: StoreComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'additem', component: AddItemComponent}
 ]
 @NgModule({
   declarations: [
@@ -28,15 +33,17 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     ItemComponent,
-    FeaturedItemsComponent
+    FeaturedItemsComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
