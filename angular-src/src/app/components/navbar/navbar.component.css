@@ -8,11 +8,11 @@ nav {
 }
 
 #user-controls{
-    background: rgba(54,25,25,.5);
+    /*background: rgba(54,25,25,.5);*/
 }
 
 .navbar{
-  background: transparent;
+  background: #F57C00;
 }
 .navbar-brand{
   color: #dedbeb;

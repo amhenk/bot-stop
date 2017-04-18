@@ -11,13 +11,13 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul id="user-controls" class="nav navbar-nav navbar-left">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']" class="btn"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       </ul>
 
       <ul id="user-controls" class="nav navbar-nav navbar-right">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/store']" class="btn">Shop</a></li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/register']" class="btn">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/login']" class="btn">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+        <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/store']">Shop</a></li>
+        <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/register']">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+        <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/login']">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
         <!-- <li ><a (click)="onLogoutClick()" href="#">Logout</a></li> -->
       </ul>
     <!--/.nav-collapse -->
