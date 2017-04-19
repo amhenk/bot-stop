@@ -1,17 +1,28 @@
 <html>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script> -->
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <body>
     <div class="container">
-      <div class="image" [ngStyle]="{'background-image':'url(' + photo + ')'}">
+      <!-- <div class="image" [ngStyle]="{'background-image':'url(' + photo + ')'}"> -->
         <div class="container-fluid">
-            <div id="info-pane" class="row">
-              <div id="about">
+            <div id="info-pane" class="row" ng-app="ngAnimate">
+              <div id="about" ng-hide="AboutBox" class="card about-card">
                 <h4>About</h4>
                 <p>
-                  Bot Stop is gonna be pretty rad.
+                  Bot Stop is an automated grocery store bringing the convenience <br />
+                  of automation while maintaining the core shopping experience.
+                </p>
+                <h5>How it works</h5>
+                <p>
+                  Simply use our online store to create an order. Once your order <br />
+                  is filled out, you can schedule a pick up time or simply pop by <br />
+                  in the next 20-30 minutes to retrieve your order at the store. <br />
+                  Once at the store you can grab any additional items you'd like <br />
+                  and simply bring your items to the checkout where they'll have <br />
+                  your order ready made for you to pick up.
                 </p>
               </div>
-              <div id="questions">
+              <div id="questions" class="card questions-card">
                 <h4>Questions</h4>
                 <p>
                   Got a question? <a href="hello@botstop.com" style="color:#000"><u>Email us!</u></a>
@@ -19,7 +30,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         <div class="row tagline">
           <!-- <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"> -->
             <!-- <h1 id="company-name">Bot Stop</h1> -->

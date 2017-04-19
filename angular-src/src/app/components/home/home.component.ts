@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { BrowserModule, DomSanitizer } from '@angular/platform-browser'
 import { FeaturedItemsComponent } from '../featured-items/featured-items.component';
 
 @Component({
