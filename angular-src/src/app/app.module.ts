@@ -16,6 +16,7 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
 import { ItemService } from './services/item.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ItemComponent,
     FeaturedItemsComponent,
-    AddItemComponent
+    AddItemComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,
