@@ -14,6 +14,7 @@ import { ItemComponent } from './components/item/item.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 
 import { ItemService } from './services/item.service';
+import { OrderService } from './services/order.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   {path: 'store', component: StoreComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'additem', component: AddItemComponent}
+  {path: 'additem', component: AddItemComponent},
+  {path: 'place-order', component: PlaceOrderComponent}
 ]
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ItemService],
+  providers: [ItemService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

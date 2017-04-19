@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { OrderService } from '../../services/order.service';
+import { ItemService } from '../../services/item.service';  // to look up items by Item ID
 
 @Component({
   selector: 'app-place-order',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceOrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onOrderSubmit(){
+
+  }
 }
