@@ -3,9 +3,13 @@ const router = express.Router();
 const config = require('../config/database');
 const order = require('../models/order');
 
-router.post('/add_order', (req, res, next) => {
+router.post('/addOrder', (req, res, next) => {
   // For now just grab everything
-  inventory.getAllItems((err, items) => {
+  const newOrder = {
+    customer_id : req.customer_id,
+    skus: req.body.skuArray
+  }
+  order.addOrder((err, items) => {
     if(err){
       console.log('order.js Returning nothing');
       throw err;
