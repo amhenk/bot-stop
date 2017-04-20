@@ -11,7 +11,10 @@ import { ItemService } from '../../services/item.service';  // to look up items 
 })
 export class PlaceOrderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private orderServe: OrderService,
+              private itemService: ItemService
+            ) { }
 
   ngOnInit() {
   }

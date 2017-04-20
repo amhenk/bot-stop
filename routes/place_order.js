@@ -7,8 +7,11 @@ router.post('/addOrder', (req, res, next) => {
   // For now just grab everything
   const newOrder = {
     customer_id : req.customer_id,
-    skus: req.body.skuArray
+    items: req.body.skuArray,
+    order_number: req.body.order_number,
+    order_cost: req.body.order_cost
   }
+
   order.addOrder((err, items) => {
     if(err){
       console.log('order.js Returning nothing');

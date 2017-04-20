@@ -15,6 +15,8 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
 
 import { ItemService } from './services/item.service';
 import { OrderService } from './services/order.service';
+import { AuthService } from './services/auth.service';
+import { ValidateService } from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
@@ -47,7 +49,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ItemService, OrderService],
+  providers: [
+    ItemService,
+    OrderService,
+    AuthService,
+    ValidateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
