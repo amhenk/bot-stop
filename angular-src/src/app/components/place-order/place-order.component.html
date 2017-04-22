@@ -12,7 +12,7 @@
 </form> -->
 <div class="card" id="order_card">
   <li *ngFor="let o of order" md-card>
-      {{o.name}}
+      <md-checkbox class="check-box">{{o.name}}</md-checkbox>
   </li>
   <button md-raised-button>Place Order</button>
 </div>

@@ -14,8 +14,9 @@ import { Order } from '../../order';
   providers: [PlaceOrderComponent]
 })
 export class StoreComponent implements OnInit {
-  items: Object[] = [];
+  items: Item[] = [];
   categories: string[] =[];
+  itemDict: Dictionary = {};
 
   order_begun: boolean = false;
 
@@ -32,6 +33,10 @@ export class StoreComponent implements OnInit {
     this.inventory.getAllItems().subscribe(inventory => {
       this.orderList.order = [];
       this.items = inventory;
+      // for(var i = 0; i < this.items.length; i++){
+      //   this.itemDict[this.items[i]._id] = 0;
+      // }
+
       console.log('Items retrieved');
       console.log(this.items);
     },
@@ -52,7 +57,17 @@ which item was selected.
     this.inventory.getItemById(item_id).subscribe(item => {
         console.log('ITEM FOUND: ' + item.name);
         this.picked_item = item;
-        this.orderList.order.push(item);
+        /* Item Quantity */
+        if(this.orderList.order.find(i => i._id == item_id)){
+          this.orderList.order_cost += +item.sales_price.toPrecision(2);
+          this.orderList.order.find(i=>i._id == item_id).quantity++;
+        }
+        else
+        {
+          this.orderList.order.push(item);
+          this.orderList.order.find(i => i._id == item_id).quantity = 1;
+          this.orderList.order_cost += +item.sales_price.toPrecision(2);
+        }
       },
       err => {
         console.log('Couldn\'t find item with id: ' + item_id);
@@ -65,4 +80,8 @@ which item was selected.
     // TODO: Might want to add emitter here and we can use place-order component
   }
 
+}
+
+interface Dictionary {
+  [index: string]: number;
 }

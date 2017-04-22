@@ -2,18 +2,23 @@
 <link href="../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <body id="page">
-  <div *ngIf="order_begun">
+  <div *ngIf="order_begun" id="order_card">
     <!-- Going to want to extract this into a different component -->
-    <div class="card" id="order_card">
-      <li *ngFor="let o of orderList.order" md-card>
-          {{o.name}}
-      </li>
-      <button md-raised-button (click)="orderList.onOrderSubmit()">Place Order</button>
-    </div>
+    <span>Cart</span>
+    <ul *ngFor="let o of orderList.order" md-card>
+        <button md-button>{{o.name}}</button><span class="money">{{o.quantity}}</span>
+    </ul>
+    <button md-raised-button (click)="orderList.onOrderSubmit()">Place Order</button>
+    <span>{{orderList.order_cost}}</span>
+  </div>
+  <div *ngIf="!order_begun" id="order_card">
+    <span>Card</span><br />
+    Nothing ordered yet! <br />
+    <button md-raised-button disabled>Place Order</button> <span md-raised-button disabled class="money">0.00</span>
   </div>
   <div class="container" id="itemList">
     <ul>
-      <li  class="container" *ngFor="let i of items" md-card>
+      <li  class="container item-container" *ngFor="let i of items" md-card>
         <div class="card">
           <h2>{{i.name}}</h2>
           <p>

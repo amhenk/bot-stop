@@ -14,6 +14,7 @@ import { ItemService } from '../../services/item.service';  // to look up items 
 })
 export class PlaceOrderComponent implements OnInit {
   order: Item[];
+  order_cost: number;
 
   constructor(private router: Router,
               private orderServe: OrderService,
@@ -21,6 +22,7 @@ export class PlaceOrderComponent implements OnInit {
               // private store: StoreComponent
             ) {
               this.order = [];
+              this.order_cost = 0.00;
             }
 
   ngOnInit() {
@@ -33,5 +35,9 @@ export class PlaceOrderComponent implements OnInit {
   onOrderSubmit(){
     // this.order.push();
     console.log('Whaddup!');
+    // for(var i = 0; i < this.order.length; i++) {
+    //   this.order_cost += +this.order[i].sales_price.toPrecision(2);
+    // }
+    console.log(this.order_cost);
   }
 }
