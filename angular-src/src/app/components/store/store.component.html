@@ -2,6 +2,14 @@
 <link href="../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <body id="page">
+  <div *ngIf="order_begun">
+    <div class="card" id="order_card">
+      <li *ngFor="let o of order" md-card>
+          {{o.name}}
+      </li>
+      <button md-raised-button>Place Order</button>
+    </div>
+  </div>
   <div class="container" id="itemList">
     <ul>
       <li  class="container" *ngFor="let i of items" md-card>

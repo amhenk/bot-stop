@@ -12,10 +12,10 @@ export class StoreComponent implements OnInit {
   items: Object[] = [];
   categories: string[] =[];
 
-  order_begun = Boolean;
+  order_begun: boolean = false;
 
   picked_item = Item;
-  order = Order;
+  order: Item[] = [];
 
   @Output() result = new EventEmitter<Item>();
 
@@ -43,13 +43,17 @@ which item was selected.
   addItemToOrder(item_id) {
     this.inventory.getItemById(item_id).subscribe(item => {
         this.picked_item = item;
-        console.log('ITEM FOUND: ' + item.name);
+        this.order.push(item);
+        console.log('ITEM FOUND: ' + this.picked_item.name);
       },
       err => {
         console.log('Couldn\'t find item with id: ' + item_id);
         return false;
       }
     );
-
+    if(!this.order_begun){
+      this.order_begun = true;
+    }
+    // TODO: Might want to add emitter here and we can use place-order component
   }
 }
