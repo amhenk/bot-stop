@@ -11,7 +11,7 @@
             Cost: {{i.sales_price}} <br />
             Category: {{i.category}} <br />
           </p>
-          <button md-raised-button (click)="addItemToOrder(i._id)" id="OrderButton">Add to Order</button>
+          <button md-fab (click)="addItemToOrder(i._id)"><md-icon>add circle</md-icon></button>
         </div>
       </li>
     </ul>

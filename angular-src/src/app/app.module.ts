@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule.forRoot()
   ],
   providers: [
     ItemService,

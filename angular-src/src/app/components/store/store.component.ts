@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../item';
+import { Order } from '../../order';
 
 @Component({
   selector: 'app-store',
@@ -9,9 +10,15 @@ import { Item } from '../../item';
 })
 export class StoreComponent implements OnInit {
   items: Object[] = [];
-  picked_item = Item;
   categories: string[] =[];
+
+  order_begun = Boolean;
+
+  picked_item = Item;
+  order = Order;
+
   @Output() result = new EventEmitter<Item>();
+
   constructor(private inventory: ItemService) { }
 
   ngOnInit() {
@@ -27,15 +34,22 @@ export class StoreComponent implements OnInit {
     });
   }
 
+/* XXX:
+This might end up being an issue later on since it's making a call every time
+someone wants to add an item to their order. We may want to just load all of the
+items and then do a search on them based on the item_id in order to determine
+which item was selected.
+*/
   addItemToOrder(item_id) {
     this.inventory.getItemById(item_id).subscribe(item => {
-      this.picked_item = item;
-      console.log('ITEM FOUND: ' + item.name);
-    },
-    err => {
-      console.log('Couldn\'t find item with id: ' + item_id);
-      return false;
-    }
-  );
+        this.picked_item = item;
+        console.log('ITEM FOUND: ' + item.name);
+      },
+      err => {
+        console.log('Couldn\'t find item with id: ' + item_id);
+        return false;
+      }
+    );
+
   }
 }
