@@ -1,4 +1,4 @@
-<h2 class="page-header">Create Order</h2>
+<!-- <h2 class="page-header">Create Order</h2>
 <form (submit)="onOrderSubmit()">
   <div class="form-group">
     <label>Name</label>
@@ -9,4 +9,10 @@
     <input type="text" [(ngModel)]="item_id" name="item_id" class="form-control" />
   </div>
   <input type="submit" class="btn btn-primary" value="Submit" />
-</form>
+</form> -->
+<div class="card" id="order_card">
+  <li *ngFor="let o of order" md-card>
+      {{o.name}}
+  </li>
+  <button md-raised-button>Place Order</button>
+</div>

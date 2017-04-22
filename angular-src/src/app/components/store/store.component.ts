@@ -1,12 +1,17 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from '../../services/item.service';
+
+import { PlaceOrderComponent } from '../place-order/place-order.component';
+
+/* Classes */
 import { Item } from '../../item';
 import { Order } from '../../order';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css']
+  styleUrls: ['./store.component.css'],
+  providers: [PlaceOrderComponent]
 })
 export class StoreComponent implements OnInit {
   items: Object[] = [];
@@ -19,10 +24,13 @@ export class StoreComponent implements OnInit {
 
   @Output() result = new EventEmitter<Item>();
 
-  constructor(private inventory: ItemService) { }
+  constructor(private inventory: ItemService,
+              private orderList: PlaceOrderComponent
+  ) { }
 
   ngOnInit() {
     this.inventory.getAllItems().subscribe(inventory => {
+      this.orderList.order = [];
       this.items = inventory;
       console.log('Items retrieved');
       console.log(this.items);
@@ -42,9 +50,9 @@ which item was selected.
 */
   addItemToOrder(item_id) {
     this.inventory.getItemById(item_id).subscribe(item => {
+        console.log('ITEM FOUND: ' + item.name);
         this.picked_item = item;
-        this.order.push(item);
-        console.log('ITEM FOUND: ' + this.picked_item.name);
+        this.orderList.order.push(item);
       },
       err => {
         console.log('Couldn\'t find item with id: ' + item_id);
@@ -56,4 +64,5 @@ which item was selected.
     }
     // TODO: Might want to add emitter here and we can use place-order component
   }
+
 }

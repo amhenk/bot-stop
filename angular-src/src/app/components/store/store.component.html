@@ -3,11 +3,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <body id="page">
   <div *ngIf="order_begun">
+    <!-- Going to want to extract this into a different component -->
     <div class="card" id="order_card">
-      <li *ngFor="let o of order" md-card>
+      <li *ngFor="let o of orderList.order" md-card>
           {{o.name}}
       </li>
-      <button md-raised-button>Place Order</button>
+      <button md-raised-button (click)="orderList.onOrderSubmit()">Place Order</button>
     </div>
   </div>
   <div class="container" id="itemList">
