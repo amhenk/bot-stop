@@ -38,6 +38,10 @@ module.exports.deleteItemById = function(id, callback) {
   Inventory.findById(id).remove(callback);
 }
 
+module.exports.getItemById = function(id, callback) {
+  Inventory.findById(id, callback);
+}
+
 module.exports.getAllItems = function(callback) {
   Inventory.find({}, callback);
 }

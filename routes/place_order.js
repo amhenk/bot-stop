@@ -26,5 +26,5 @@ router.post('/addOrder', (req, res, next) => {
 // Dummy request to make sure things are working
 router.get('/hello', (req, res, next) => {
   console.log('Hello!');
-  res.json({success: true, message: 'Hi!'});
+  return res.json({success: true, message: 'Hi!'});
 });

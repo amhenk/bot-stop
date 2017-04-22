@@ -20,7 +20,8 @@
     "mongoose": "*",
     "normalize.css": "^6.0.0",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "request": "^2.81.0"
   },
   "author": "Alex Henkemeier",
   "license": "ISC"

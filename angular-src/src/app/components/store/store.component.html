@@ -1,13 +1,18 @@
 <html>
+<link href="../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <body id="page">
   <div class="container" id="itemList">
     <ul>
-      <li  class="container" *ngFor="let i of items">
-        <h2>{{i.name}}</h2>
-        <p>
-          Cost: {{i.sales_price}} <br />
-          Category: {{i.category}} <br />
-        </p>
+      <li  class="container" *ngFor="let i of items" md-card>
+        <div class="card">
+          <h2>{{i.name}}</h2>
+          <p>
+            Cost: {{i.sales_price}} <br />
+            Category: {{i.category}} <br />
+          </p>
+          <button md-raised-button (click)="addItemToOrder(i._id)" id="OrderButton">Add to Order</button>
+        </div>
       </li>
     </ul>
   </div>

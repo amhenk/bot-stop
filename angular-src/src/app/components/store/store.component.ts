@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from '../../services/item.service';
+import { Item } from '../../item';
 
 @Component({
   selector: 'app-store',
@@ -8,8 +9,9 @@ import { ItemService } from '../../services/item.service';
 })
 export class StoreComponent implements OnInit {
   items: Object[] = [];
+  picked_item = Item;
   categories: string[] =[];
-
+  @Output() result = new EventEmitter<Item>();
   constructor(private inventory: ItemService) { }
 
   ngOnInit() {
@@ -25,4 +27,15 @@ export class StoreComponent implements OnInit {
     });
   }
 
+  addItemToOrder(item_id) {
+    this.inventory.getItemById(item_id).subscribe(item => {
+      this.picked_item = item;
+      console.log('ITEM FOUND: ' + item.name);
+    },
+    err => {
+      console.log('Couldn\'t find item with id: ' + item_id);
+      return false;
+    }
+  );
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -32,5 +32,13 @@ export class ItemService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/store/addItem', item,
             {headers: headers}).map(res => res.json());
+  }
+
+  getItemById(item_id){
+    let headers = new Headers();
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('item_id', item_id);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:8080/store/inventory/getItemById', {headers: headers, search: params}).map(res => res.json());
   }
 }
