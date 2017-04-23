@@ -18,8 +18,8 @@ router.post('/addOrder', (req, res, next) => {
       throw err;
     }
     console.log('order.js Returning success');
-    return res.json({success: true, msg: 'Order Placed'});
-    // res.send(order);
+    // return res.json({success: true, msg: 'Order Placed'});
+    return res.send({success: true, msg: 'Order Placed'});
   });
   // return res.json();
 });

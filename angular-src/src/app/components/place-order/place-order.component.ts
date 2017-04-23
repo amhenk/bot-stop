@@ -40,6 +40,12 @@ export class PlaceOrderComponent implements OnInit {
     // for(var i = 0; i < this.order.length; i++) {
     //   this.order_cost += +this.order[i].sales_price.toPrecision(2);
     // }
-    this.orderService.placeOrder(this.order, this.order_cost, this.order_number);
+    this.orderService.placeOrder(this.order, this.order_cost, this.order_number).subscribe(
+      data => {
+        if(data.success){
+          console.log(data);
+        }
+      }
+    );
   }
 }
