@@ -10,7 +10,17 @@
   background-color: #fff;
   vertical-align: top;
   padding-right: 20px;
+  border-radius: 4px;
   position: absolute;
+  text-align: center;
+}
+
+#order_card.span{
+  position: relative;
+}
+
+#order_card.place_order_button{
+  left:0;
 }
 
 .money{
@@ -23,10 +33,20 @@
   margin-left: 15px;
   text-align: right;
 }
+
+ul.order_list{
+  margin: 10 auto;
+  text-align: left;
+}
+
+span.quantity{
+  margin: auto;
+}
 div {
   display: inline-block;
   float: left;
 }
+
 ul{
   margin: 10 auto;
   text-align: center;

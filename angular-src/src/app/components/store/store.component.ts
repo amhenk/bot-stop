@@ -16,12 +16,13 @@ import { Order } from '../../order';
 export class StoreComponent implements OnInit {
   items: Item[] = [];
   categories: string[] =[];
+  displayCost: String;
   itemDict: Dictionary = {};
 
-  picked_item = Item;
   order: Item[] = [];
 
-  @Output() result = new EventEmitter<Item>();
+  // Still need to find a use for this, might be relevant later.
+  // @Output() result = new EventEmitter<Item>();
 
   constructor(private inventory: ItemService,
               private orderList: PlaceOrderComponent
@@ -31,9 +32,7 @@ export class StoreComponent implements OnInit {
     this.inventory.getAllItems().subscribe(inventory => {
       this.orderList.order = [];
       this.items = inventory;
-      // for(var i = 0; i < this.items.length; i++){
-      //   this.itemDict[this.items[i]._id] = 0;
-      // }
+      this.displayCost = "0.00";
 
       console.log('Items retrieved');
       console.log(this.items);
@@ -54,17 +53,18 @@ which item was selected.
   addItemToOrder(item_id) {
     this.inventory.getItemById(item_id).subscribe(item => {
         console.log('ITEM FOUND: ' + item.name);
-        this.picked_item = item;
         /* Item Quantity */
         if(this.orderList.order.find(i => i._id == item_id)){
-          this.orderList.order_cost += +item.sales_price.toPrecision(2);
+          this.orderList.order_cost += +item.sales_price.toFixed(2);
           this.orderList.order.find(i=>i._id == item_id).quantity++;
+          this.displayCost = ((this.orderList.order_cost * 100) / 100).toFixed(2).toString();
         }
         else
         {
           this.orderList.order.push(item);
           this.orderList.order.find(i => i._id == item_id).quantity = 1;
-          this.orderList.order_cost += +item.sales_price.toPrecision(2);
+          this.orderList.order_cost += +item.sales_price.toFixed(2);
+          this.displayCost = ((this.orderList.order_cost * 100) / 100).toFixed(2).toString();
         }
       },
       err => {

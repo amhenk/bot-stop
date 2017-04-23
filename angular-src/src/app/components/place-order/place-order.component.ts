@@ -7,6 +7,13 @@ import { Item } from '../../item';
 import { OrderService } from '../../services/order.service';
 import { ItemService } from '../../services/item.service';  // to look up items by Item ID
 
+/*
+NOTE:
+  This component could probably be reduced to the order service since we don't
+  actually use the 'component' part of this component and rather just use it
+  to handle the data that gets passed to order service. However there are some
+  pros to handling the data separately.
+ */
 @Component({
   selector: 'app-place-order',
   templateUrl: './place-order.component.html',
@@ -32,16 +39,7 @@ export class PlaceOrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateOrder(){
-    // Append selected item onto the current order
-    // this.order.push();
-  }
   onOrderSubmit(){
-    // this.order.push();
-    console.log('Whaddup!');
-    // for(var i = 0; i < this.order.length; i++) {
-    //   this.order_cost += +this.order[i].sales_price.toPrecision(2);
-    // }
     this.orderService.placeOrder(this.order, this.order_cost, this.order_number).subscribe(
       data => {
         if(data.success){
