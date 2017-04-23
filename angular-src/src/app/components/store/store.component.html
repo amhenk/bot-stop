@@ -2,7 +2,7 @@
 <link href="../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <body id="page">
-  <div *ngIf="order_begun" id="order_card">
+  <div *ngIf="orderList.order_begun" id="order_card">
     <!-- Going to want to extract this into a different component -->
     <span>Cart</span>
     <ul *ngFor="let o of orderList.order" md-card>
@@ -11,7 +11,7 @@
     <button md-raised-button (click)="orderList.onOrderSubmit()">Place Order</button>
     <span>{{orderList.order_cost}}</span>
   </div>
-  <div *ngIf="!order_begun" id="order_card">
+  <div *ngIf="!orderList.order_begun" id="order_card">
     <span>Cart</span><br />
     Nothing ordered yet! <br />
     <button md-raised-button disabled>Place Order</button> <span md-raised-button disabled class="money">0.00</span>

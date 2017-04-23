@@ -18,8 +18,6 @@ export class StoreComponent implements OnInit {
   categories: string[] =[];
   itemDict: Dictionary = {};
 
-  order_begun: boolean = false;
-
   picked_item = Item;
   order: Item[] = [];
 
@@ -74,8 +72,8 @@ which item was selected.
         return false;
       }
     );
-    if(!this.order_begun){
-      this.order_begun = true;
+    if(!this.orderList.order_begun){
+      this.orderList.order_begun = true;
     }
     // TODO: Might want to add emitter here and we can use place-order component
   }

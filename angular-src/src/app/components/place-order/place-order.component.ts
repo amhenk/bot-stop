@@ -16,15 +16,17 @@ export class PlaceOrderComponent implements OnInit {
   order: Item[];
   order_cost: number;
   order_number: Number;
+  order_begun: boolean;
 
   constructor(private router: Router,
               private orderService: OrderService,
               private itemService: ItemService
               // private store: StoreComponent
             ) {
+              this.order_begun = false;
               this.order = [];
               this.order_cost = 0.00;
-              this.order_number = 39104001;
+              this.order_number = getRandomInt(10000000,99999999);
             }
 
   ngOnInit() {
@@ -47,5 +49,13 @@ export class PlaceOrderComponent implements OnInit {
         }
       }
     );
+    this.order = [];
+    this.order_cost = 0.00;
+    this.order_number = this.order_number = getRandomInt(10000000,99999999);
+    this.order_begun = false;
   }
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
