@@ -5,12 +5,12 @@ const config = require('../config/database');
 // Order Schema
 const OrderSchema = mongoose.Schema({
   customer_id: String,    // TODO: See if this is actually how this works
-  items: String[],
+  items: [String],
   order_number: String,   // XXX: This probably needs to be something more robust to ensure no overlaps
   order_cost: Number
 });
 
-const Order = module.exports = mongoose.model('Order', OrderSchema);
+const Order = module.exports = mongoose.model('order', OrderSchema);
 
 module.exports.addOrder = function(newOrder, callback){
   newOrder.save(callback);

@@ -15,14 +15,16 @@ import { ItemService } from '../../services/item.service';  // to look up items 
 export class PlaceOrderComponent implements OnInit {
   order: Item[];
   order_cost: number;
+  order_number: Number;
 
   constructor(private router: Router,
-              private orderServe: OrderService,
+              private orderService: OrderService,
               private itemService: ItemService
               // private store: StoreComponent
             ) {
               this.order = [];
               this.order_cost = 0.00;
+              this.order_number = 39104001;
             }
 
   ngOnInit() {
@@ -38,6 +40,6 @@ export class PlaceOrderComponent implements OnInit {
     // for(var i = 0; i < this.order.length; i++) {
     //   this.order_cost += +this.order[i].sales_price.toPrecision(2);
     // }
-    console.log(this.order_cost);
+    this.orderService.placeOrder(this.order, this.order_cost, this.order_number);
   }
 }

@@ -21,6 +21,7 @@ mongoose.connection.on('error', () => {
 
 const app = express();
 
+const place_order = require('./routes/place_order');
 const users = require('./routes/users');
 const store = require('./routes/store');
 
@@ -43,6 +44,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/store', store);
+app.use('/place_order', place_order);
 
 // Index Route
 app.get('/', (req, res) => {
