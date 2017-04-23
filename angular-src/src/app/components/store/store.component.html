@@ -7,7 +7,7 @@
 <body id="page">
   <div *ngIf="orderList.order_begun" id="order_card">
     <!-- Going to want to extract this into a different component -->
-    <span>Cart</span>
+    <h4>Cart</h4>
     <ul class="order_list" *ngFor="let o of orderList.order" md-card>
         <button md-button>{{o.name}}</button><span class="quantity">{{o.quantity}}</span>
     </ul>
@@ -15,8 +15,8 @@
     <span class="money">{{displayCost}}</span>
   </div>
   <div *ngIf="!orderList.order_begun" id="order_card">
-    <span>Cart</span><br />
-    <span>Nothing ordered yet! <br /></span>
+    <h4>Cart</h4><br />
+    <p>Nothing ordered yet! <br /></p>
     <button md-raised-button disabled class="place_order_button">Place Order</button> <span class="money">0.00</span>
   </div>
   <div class="container" id="itemList">
@@ -28,7 +28,15 @@
             Cost: {{i.sales_price}} <br />
             Category: {{i.category}} <br />
           </p>
-          <button md-fab (click)="addItemToOrder(i._id)"><md-icon>add circle</md-icon></button>
+          <button md-fab class="add_item md-ink-ripple" (click)="addItemToOrder(i._id)">
+            <md-icon class="ng-scope" md-svg-source="assets/icons/ic_add_black_24px.svg" role="img">
+              add
+              <svg height="100%" viewBox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg>
+            </md-icon>
+          </button>
         </div>
       </li>
     </ul>

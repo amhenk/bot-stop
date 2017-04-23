@@ -3,7 +3,10 @@
   margin-left: 10%;
   position: absolute;
 }
-
+.add_item{
+  /*width:auto;*/
+  left:auto;
+}
 #order_card{
   margin-top: 5%;
   margin-left: 2%;
@@ -11,7 +14,7 @@
   vertical-align: top;
   padding-right: 20px;
   border-radius: 4px;
-  position: absolute;
+  position: fixed;
   text-align: center;
 }
 
