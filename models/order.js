@@ -7,7 +7,9 @@ const OrderSchema = mongoose.Schema({
   customer_id: String,    // TODO: See if this is actually how this works
   items: [String],
   order_number: String,   // XXX: This probably needs to be something more robust to ensure no overlaps
-  order_cost: Number
+  order_cost: Number,
+  create_date: Date,
+  pickup_date: Date
 });
 
 const Order = module.exports = mongoose.model('order', OrderSchema);

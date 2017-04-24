@@ -14,14 +14,8 @@
         <div id="upcoming_orders" class="container">
           <button md-button><h4>Upcoming Orders</h4></button>
           <ul>
-            <li>
-              Order 4 4/25/2017
-            </li>
-            <li>
-              Order 5 4/28/2017
-            </li>
-            <li>
-              Order 6 5/5/2017
+            <li *ngFor="let f of future_orders">
+              Order {{f.order_number}} {{f.pickup_date}}
             </li>
             <a>Schedule Order</a>
           </ul>
@@ -29,14 +23,8 @@
         <div id="past_order" class="container">
           <button md-button><h4>Past Orders</h4></button>
           <ul>
-            <li>
-              Order 3 4/20/2017
-            </li>
-            <li>
-              Order 2 4/16/2017
-            </li>
-            <li>
-              Order 1 4/3/2017
+            <li *ngFor="let p of past_orders">
+              Order {{p.order_number}} {{p.pickup_date}}
             </li>
             <a>View Past Orders</a>
           </ul>

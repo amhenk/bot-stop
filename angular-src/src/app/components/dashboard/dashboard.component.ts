@@ -15,7 +15,10 @@ import { Order } from '../../order';
 export class DashboardComponent implements OnInit {
 
   user: User = new User();
-  orders: Order[] = [];
+  orders: Order[];
+  past_orders: Order[] = [];
+  future_orders: Order[] = [];
+  temp: Order = new Order();
 
   constructor(
     private authService: AuthService,
@@ -29,6 +32,26 @@ export class DashboardComponent implements OnInit {
 
       this.orderService.getOrder(profile._id).subscribe(orders => {
         this.orders = orders;
+        this.orders.forEach( (s) => {
+          if("pickup_date" in s){
+            var pickupdate = new Date(s.pickup_date);
+            var now = new Date().getTime().valueOf();
+            if (s.pickup_date == null || pickupdate.getTime().valueOf() < now){
+              s.pickup_date = (pickupdate.getMonth()+1) +'/'
+                              + pickupdate.getDay() + '/' + pickupdate.getFullYear()
+                              + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
+              this.past_orders.push(s);
+            }
+            else {
+              s.pickup_date = (pickupdate.getMonth()+1) +'/'
+                              + pickupdate.getDay() + '/' + pickupdate.getFullYear()
+                              + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
+              this.future_orders.push(s);
+            }
+          } else if(!("pickup_date" in s)){
+            console.log("No!");
+          }
+        });
         console.log(orders);
       },
       err => {
