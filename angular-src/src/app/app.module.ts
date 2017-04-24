@@ -20,6 +20,8 @@ import { ItemService } from './services/item.service';
 import { OrderService } from './services/order.service';
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
+import { AuthGuard } from './guards/auth.guard';
+
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
@@ -31,7 +33,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'additem', component: AddItemComponent},
   {path: 'place-order', component: PlaceOrderComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}
 ]
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     ItemService,
     OrderService,
     AuthService,
-    ValidateService
+    ValidateService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
