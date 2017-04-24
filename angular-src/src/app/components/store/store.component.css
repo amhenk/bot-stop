@@ -21,8 +21,8 @@
   vertical-align: top;
   padding-right: 20px;
   border-radius: 4px;
-  position: fixed;
   text-align: center;
+  position: absolute;
 }
 
 #order_card.span{
@@ -30,15 +30,17 @@
 }
 
 button.place_order_button{
-  background-color: #26a740;
+  /*background-color: #26a740;*/
   margin-left: auto;
 
 }
 
 button.place_order_button:hover{
-  background-color: green;
+  background-color: #26a740;
   margin-left: auto;
-
+  color: yellow;
+  font-weight: 700;
+  position: relative;
 }
 
 .money{
