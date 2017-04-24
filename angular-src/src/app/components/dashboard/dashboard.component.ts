@@ -14,10 +14,8 @@ import { Order } from '../../order';
 })
 export class DashboardComponent implements OnInit {
 
-  user: User;
-  name: String;
-  username: String;
-  orders: Object;
+  user: User = new User();
+  orders: Order[] = [];
 
   constructor(
     private authService: AuthService,
@@ -28,8 +26,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.authService.getProfile().subscribe(profile =>{
       this.user = profile.user;
-      this.name = this.user.name;
-      this.username = this.user.username;
 
       this.orderService.getOrder(profile._id).subscribe(orders => {
         this.orders = orders;

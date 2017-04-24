@@ -23,7 +23,8 @@ export class StoreComponent implements OnInit {
 
   order: Item[] = [];
 
-  user: User;
+  user: User = new User();
+  loggedIn: boolean;
   // Still need to find a use for this, might be relevant later.
   // @Output() result = new EventEmitter<Item>();
 
@@ -33,11 +34,21 @@ export class StoreComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    /*
+      TODO: Need to modify this so we handle guest transactions and signed in folks
+     */
+
     if(this.authService.loggedIn()){
       this.authService.getProfile().subscribe(profile => {
         this.user = profile.user;
+        console.log(this.user.name);
       })
+      this.loggedIn = true;
+    } else {
+      this.user.name = "guest";
+      this.loggedIn = false;
     }
+
     this.inventory.getAllItems().subscribe(inventory => {
       this.orderList.order = [];
       this.items = inventory;

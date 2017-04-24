@@ -8,7 +8,7 @@
     <div class="row">
       <div id="account_info" class="card">
         <img src="http://placehold.it/150x100" style="border-radius: 4px" />
-        <h2>{{name}}</h2>
+        <h2>{{user.name}}</h2>
       </div>
       <div id="module_container"class="card col-md-3" md-card>
         <div id="upcoming_orders" class="container">
@@ -23,6 +23,7 @@
             <li>
               Order 6 5/5/2017
             </li>
+            <a>Schedule Order</a>
           </ul>
         </div>
         <div id="past_order" class="container">
@@ -37,6 +38,7 @@
             <li>
               Order 1 4/3/2017
             </li>
+            <a>View Past Orders</a>
           </ul>
         </div>
         <div id="shopping_lists" class="container">
@@ -48,7 +50,7 @@
             <li>
               Essentials
             </li>
-            <a (click)="startNewList()">+ Create New List</a>
+            <a (click)="startNewList()">Create New List</a>
           </ul>
         </div>
       </div>

@@ -10,6 +10,7 @@ h4{
 
 p{
   font-size: 12px;
+  font-weight: 200;
 }
 
 .image {
@@ -29,7 +30,9 @@ p{
   background-color: transparent;
   border-radius: 4px;
 }*/
-
+#about.card{
+  background-color: #fff;
+}
 #about{
   float:left;
   color: black;
