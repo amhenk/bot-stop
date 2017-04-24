@@ -7,8 +7,15 @@
   /*width:auto;*/
   left:auto;
 }
+
+#order_list{
+    margin: 0 auto;
+    text-align: left;
+}
+
 #order_card{
-  margin-top: 5%;
+  display: inline-block;
+  margin-top: 8%;
   margin-left: 2%;
   background-color: #fff;
   vertical-align: top;
@@ -22,8 +29,16 @@
   position: relative;
 }
 
-#order_card.place_order_button{
-  left:0;
+button.place_order_button{
+  background-color: #26a740;
+  margin-left: auto;
+
+}
+
+button.place_order_button:hover{
+  background-color: green;
+  margin-left: auto;
+
 }
 
 .money{

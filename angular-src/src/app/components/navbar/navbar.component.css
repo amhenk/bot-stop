@@ -7,12 +7,9 @@ nav {
   width: 100%;
 }
 
-#user-controls{
-    background: rgba(54,25,25,.5);
-}
-
 .navbar{
-  background: transparent;
+  background: #F57C00;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .navbar-brand{
   color: #dedbeb;
@@ -22,8 +19,9 @@ nav {
 }
 
 .nav.navbar-nav li a:hover{
-  color: gray;
-  background:
+  color: white;
+  background: #d66c00;
+  height: inherit;
 }
 
 .nav.navbar-nav li a:focus{
@@ -34,14 +32,6 @@ nav {
 .nav.navbar-nav.navbar-left li a.btn.btn-primary{
   color: #dedbeb;
   background-color: #158cba;
-}
-
-.btn.btn-primary:hover{
-  background-color: #1780a7;
-}
-
-.btn.btn-primary:active{
-  background-color: #1780a7;
 }
 
 .nav.navbar-nav.navbar-right li a.btn.btn-success:hover{
