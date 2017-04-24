@@ -44,33 +44,34 @@
       </div>
       <div id="recommended" class="card container">
         <h1>Recommended Items</h1>
+        <div id="quick_shop" class="container">
+          <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
+            <h3>Browse Grocery</h3>
+            <ul class="quicklinks">
+                  <li><a>Pantry</a></li>
+                  <li><a>Dairy</a></li>
+                  <li><a>Beverages</a></li>
+            </ul>
+          </div>
+          <div class="card btn" id="shopHome" [routerLink]="['/store']">
+            <h3>Browse Home</h3>
+            <ul class="quicklinks">
+                  <li><a>Bathroom</a></li>
+                  <li><a>Kitchen</a></li>
+                  <li><a>Cleaning</a></li>
+            </ul>
+          </div>
+          <div class="card btn" id="shopHealth" [routerLink]="['/store']">
+            <h3>Browse Health</h3>
+            <ul class="quicklinks">
+                  <li><a>Beauty</a></li>
+                  <li><a>Medicine</a></li>
+                  <li><a>Nutrition</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div id="quick_shop" class="container">
-        <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
-          <h3>Browse Grocery</h3>
-          <ul class="quicklinks">
-                <li><a>Pantry</a></li>
-                <li><a>Dairy</a></li>
-                <li><a>Beverages</a></li>
-          </ul>
-        </div>
-        <div class="card btn" id="shopHome" [routerLink]="['/store']">
-          <h3>Browse Home</h3>
-          <ul class="quicklinks">
-                <li><a>Bathroom</a></li>
-                <li><a>Kitchen</a></li>
-                <li><a>Cleaning</a></li>
-          </ul>
-        </div>
-        <div class="card btn" id="shopHealth" [routerLink]="['/store']">
-          <h3>Browse Health</h3>
-          <ul class="quicklinks">
-                <li><a>Beauty</a></li>
-                <li><a>Medicine</a></li>
-                <li><a>Nutrition</a></li>
-          </ul>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

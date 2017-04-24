@@ -40,13 +40,17 @@ export class DashboardComponent implements OnInit {
               s.pickup_date = (pickupdate.getMonth()+1) +'/'
                               + pickupdate.getDay() + '/' + pickupdate.getFullYear()
                               + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
-              this.past_orders.push(s);
+              if(this.past_orders.length < 3){
+                  this.past_orders.push(s);
+              }
             }
             else {
               s.pickup_date = (pickupdate.getMonth()+1) +'/'
                               + pickupdate.getDay() + '/' + pickupdate.getFullYear()
                               + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
-              this.future_orders.push(s);
+              if(this.future_orders.length < 3){
+                  this.future_orders.push(s);
+              }
             }
           } else if(!("pickup_date" in s)){
             console.log("No!");
