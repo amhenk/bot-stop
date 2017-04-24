@@ -13,6 +13,7 @@ import { StoreComponent } from './components/store/store.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ItemComponent } from './components/item/item.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 
 import { ItemService } from './services/item.service';
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'additem', component: AddItemComponent},
-  {path: 'place-order', component: PlaceOrderComponent}
+  {path: 'place-order', component: PlaceOrderComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ]
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     ItemComponent,
     FeaturedItemsComponent,
     AddItemComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
