@@ -24,6 +24,18 @@ router.post('/addOrder', (req, res, next) => {
   // return res.json();
 });
 
+// Get orders by the customer id
+router.get('/getOrder', (req, res, next) => {
+  const customer_id = req.query.cust_id;
+  order.getOrdersByCustomerId(customer_id, (err, orders) => {
+    if(err){
+      throw err;
+    } else {
+      res.send(orders);
+    }
+  })
+})
+
 // Dummy request to make sure things are working
 router.get('/hello', (req, res, next) => {
   console.log('Hello!');

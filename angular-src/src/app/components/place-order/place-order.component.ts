@@ -39,8 +39,8 @@ export class PlaceOrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  onOrderSubmit(){
-    this.orderService.placeOrder(this.order, this.order_cost, this.order_number).subscribe(
+  onOrderSubmit(cust_id){
+    this.orderService.placeOrder(cust_id, this.order, this.order_cost, this.order_number).subscribe(
       data => {
         if(data.success){
           console.log(data);

@@ -1,11 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from '../../services/item.service';
+import { AuthService } from '../../services/auth.service';
 
 import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 /* Classes */
 import { Item } from '../../item';
 import { Order } from '../../order';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-store',
@@ -21,14 +23,21 @@ export class StoreComponent implements OnInit {
 
   order: Item[] = [];
 
+  user: User;
   // Still need to find a use for this, might be relevant later.
   // @Output() result = new EventEmitter<Item>();
 
   constructor(private inventory: ItemService,
-              private orderList: PlaceOrderComponent
+              private orderList: PlaceOrderComponent,
+              private authService: AuthService
   ) { }
 
   ngOnInit() {
+    if(this.authService.loggedIn()){
+      this.authService.getProfile().subscribe(profile => {
+        this.user = profile.user;
+      })
+    }
     this.inventory.getAllItems().subscribe(inventory => {
       this.orderList.order = [];
       this.items = inventory;

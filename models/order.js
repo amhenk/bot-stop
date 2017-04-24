@@ -22,3 +22,8 @@ module.exports.updateOrder = function(updates, callback){
                           {upsert: true},
                           callback);
 }
+
+module.exports.getOrdersByCustomerId = function(customer_id, callback){
+  const query = {'cust_id': customer_id};
+  Order.find(query, callback);
+}
