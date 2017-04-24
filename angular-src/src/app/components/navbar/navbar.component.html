@@ -17,10 +17,10 @@
       <ul id="user-controls" class="nav navbar-nav navbar-right">
         <li *ngIf="authService.loggedIn()" md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/dashboard']" class="btn">Dashboard</a></li>
         <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/store']" class="btn">Shop</a></li>
-        <li md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/register']" class="btn">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+        <li *ngIf="!authService.loggedIn()" md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/register']" class="btn">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
         <li *ngIf="!authService.loggedIn()" md-button [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/login']" class="btn">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
 
-        <li *ngIf="authService.loggedIn()"><a (click)="onLogoutClick()" href="#">Logout</a></li>
+        <li *ngIf="authService.loggedIn()" md-button><a (click)="onLogoutClick()" href="#" class="btn">Logout</a></li>
       </ul>
     <!--/.nav-collapse -->
     </div>
