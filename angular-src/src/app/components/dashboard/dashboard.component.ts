@@ -12,4 +12,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  startNewList(){
+    console.log("Whaddup");
+  }
+
 }

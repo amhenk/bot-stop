@@ -1,8 +1,61 @@
 <div class="dashboard-page">
   <div class="container page">
     <div class="row">
-      <div class="col-md-10 offset-md-1 col-xs-12">
-        
+      <div id="module_container"class="card col-md-3" md-card>
+        <div id="upcoming_orders" class="container">
+          <h4>Upcoming Orders</h4>
+          <ul>
+            <li>
+              Order 4 4/25/2017
+            </li>
+            <li>
+              Order 5 4/28/2017
+            </li>
+            <li>
+              Order 6 5/5/2017
+            </li>
+          </ul>
+        </div>
+        <div id="past_order" class="container">
+          <h4>Past Orders</h4>
+          <ul>
+            <li>
+              Order 3 4/20/2017
+            </li>
+            <li>
+              Order 2 4/16/2017
+            </li>
+            <li>
+              Order 1 4/3/2017
+            </li>
+          </ul>
+        </div>
+        <div id="shopping_lists" class="container">
+          <h4>Shopping List</h4>
+          <ul>
+            <li>
+              Sunday List
+            </li>
+            <li>
+              Essentials
+            </li>
+            <a (click)="startNewList()">+ Create New List</a>
+          </ul>
+        </div>
+      </div>
+      <div id="recommended" class="card container">
+        <h1>Yo</h1>
+      </div>
+      <div id="quick_shop" class="container">
+        <div class="card" id="shopGrocery" md-card>
+          <h3>Shop Grocery</h3>
+        </div>
+        <div class="card" id="shopHome" md-card>
+          <h3>Shop Home</h3>
+        </div>
+        <div class="card" id="shopHealth" md-card>
+          <h3>Shop Health &amp; Beauty</h3>
+        </div>
       </div>
     </div>
   </div>
