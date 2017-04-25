@@ -20,6 +20,14 @@ export class DashboardComponent implements OnInit {
   future_orders: Order[] = [];
   temp: Order = new Order();
 
+  /* Module Toggles */
+  displayRecommended: boolean = true
+  displayPastOrders: boolean = false;
+  displayUpcomingOrders: boolean = false;
+  displayCreateScheduledOrder: boolean = false;
+  displayShoppingList: boolean = false;
+  displayCreateNewShoppingList: boolean = false;
+
   constructor(
     private authService: AuthService,
     private orderService: OrderService,
@@ -40,17 +48,13 @@ export class DashboardComponent implements OnInit {
               s.pickup_date = (pickupdate.getMonth()+1) +'/'
                               + pickupdate.getDay() + '/' + pickupdate.getFullYear()
                               + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
-              if(this.past_orders.length < 3){
-                  this.past_orders.push(s);
-              }
+              this.past_orders.push(s);
             }
             else {
               s.pickup_date = (pickupdate.getMonth()+1) +'/'
                               + pickupdate.getDay() + '/' + pickupdate.getFullYear()
                               + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
-              if(this.future_orders.length < 3){
-                  this.future_orders.push(s);
-              }
+              this.future_orders.push(s);
             }
           } else if(!("pickup_date" in s)){
             console.log("No!");
@@ -67,6 +71,20 @@ export class DashboardComponent implements OnInit {
       console.log(err);
       return false;
     });
+  }
+
+  private setAllFalse(){
+    this.displayRecommended = false;
+    this.displayPastOrders = false;
+    this.displayUpcomingOrders = false;
+    this.displayCreateScheduledOrder = false;
+    this.displayShoppingList = false;
+    this.displayCreateNewShoppingList = false;
+  }
+
+  viewPastOrders(){
+    this.setAllFalse();
+    this.displayPastOrders = true;
   }
 
   startNewList(){

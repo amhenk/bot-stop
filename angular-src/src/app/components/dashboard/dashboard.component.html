@@ -14,19 +14,19 @@
         <div id="upcoming_orders" class="container">
           <button md-button><h4>Upcoming Orders</h4></button>
           <ul>
-            <li *ngFor="let f of future_orders">
-              Order {{f.order_number}} {{f.pickup_date}}
-            </li>
+            <ul *ngFor="let f of future_orders; let i=index">
+              <span *ngIf="i<3">Order {{f.order_number}} {{f.pickup_date}}</span>
+            </ul>
             <a>Schedule Order</a>
           </ul>
         </div>
         <div id="past_order" class="container">
           <button md-button><h4>Past Orders</h4></button>
           <ul>
-            <li *ngFor="let p of past_orders">
-              Order {{p.order_number}} {{p.pickup_date}}
-            </li>
-            <a>View Past Orders</a>
+            <ul *ngFor="let p of past_orders; let i=index">
+              <a *ngIf="i<3">Order {{p.order_number}} {{p.pickup_date}}</a>
+            </ul>
+            <li style="list-style-type:none;" (click)="viewPastOrders()">View Past Orders</li>
           </ul>
         </div>
         <div id="shopping_lists" class="container">
@@ -42,36 +42,53 @@
           </ul>
         </div>
       </div>
-      <div id="recommended" class="card container">
-        <h1>Recommended Items</h1>
-        <div id="quick_shop" class="container">
-          <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
-            <h3>Browse Grocery</h3>
-            <ul class="quicklinks">
-                  <li><a>Pantry</a></li>
-                  <li><a>Dairy</a></li>
-                  <li><a>Beverages</a></li>
-            </ul>
-          </div>
-          <div class="card btn" id="shopHome" [routerLink]="['/store']">
-            <h3>Browse Home</h3>
-            <ul class="quicklinks">
-                  <li><a>Bathroom</a></li>
-                  <li><a>Kitchen</a></li>
-                  <li><a>Cleaning</a></li>
-            </ul>
-          </div>
-          <div class="card btn" id="shopHealth" [routerLink]="['/store']">
-            <h3>Browse Health</h3>
-            <ul class="quicklinks">
-                  <li><a>Beauty</a></li>
-                  <li><a>Medicine</a></li>
-                  <li><a>Nutrition</a></li>
-            </ul>
-          </div>
+      <div id="main_module" class="card container">
+        <!-- TODO:  Switchable modules-->
+        <!-- Default Recommended Items -->
+        <div id="recommended" *ngIf="displayRecommended">
+          <h1>Recommended Items</h1>
+        </div>
+        <div id="past_order_module" *ngIf="displayPastOrders">
+          <h1>Past Orders</h1>
+          <ul>
+            <li *ngFor=
+          </ul>
+        </div>
+        <div id="upcoming_order_module" *ngIf="displayUpcomingOrders">
+          <h1>Upcoming Orders</h1>
+        </div>
+        <div id="shopping_list_module" *ngIf="displayShoppingList">
+          <h1>Shopping List</h1>
+        </div>
+
+      </div>
+      <!-- Quick Select buttons -->
+      <div id="quick_shop" class="container">
+        <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
+          <h3>Browse Grocery</h3>
+          <ul class="quicklinks">
+                <li><a>Pantry</a></li>
+                <li><a>Dairy</a></li>
+                <li><a>Beverages</a></li>
+          </ul>
+        </div>
+        <div class="card btn" id="shopHome" [routerLink]="['/store']">
+          <h3>Browse Home</h3>
+          <ul class="quicklinks">
+                <li><a>Bathroom</a></li>
+                <li><a>Kitchen</a></li>
+                <li><a>Cleaning</a></li>
+          </ul>
+        </div>
+        <div class="card btn" id="shopHealth" [routerLink]="['/store']">
+          <h3>Browse Health</h3>
+          <ul class="quicklinks">
+                <li><a>Beauty</a></li>
+                <li><a>Medicine</a></li>
+                <li><a>Nutrition</a></li>
+          </ul>
         </div>
       </div>
-
     </div>
   </div>
 </div>

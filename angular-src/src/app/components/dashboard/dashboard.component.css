@@ -21,14 +21,13 @@
 }
 
 #quick_shop{
-  position: inherit;
-  margin-bottom: 2%;
+  position: absolute;
   overflow: hidden;
-  margin-top: 40%;
-  margin-left:-4%;
+  margin-top: 27%;
+  margin-left:25%;
 }
 
-#recommended.container {
+#main_module.container {
   width: 750px;
   height: 350px;
   margin-top: 7%;
@@ -45,7 +44,7 @@
 }
 
 .btn{
-  width: 250px;
+  width: 240px;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   z-index: 0;
   overflow: hidden;
@@ -58,7 +57,7 @@
   z-index: 100;
   padding-bottom: 55px;
   overflow: visible;
-  box-shadow: 2px 4px 28px rgba(0,0,0,0.25), 0 15px 15px rgba(0,0,0,0.22);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.25), 0 15px 15px rgba(0,0,0,0.22);
 }
 
 .btn:hover .quicklinks{
