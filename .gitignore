@@ -38,3 +38,6 @@ jspm_packages
 
 # public directory
 public
+
+# backup files
+._bkp

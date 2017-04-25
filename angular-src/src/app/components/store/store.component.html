@@ -5,25 +5,21 @@
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body id="page">
-  <div *ngIf="orderList.order_begun" id="order_card">
-    <!-- Going to want to extract this into a different component -->
-    <h5>Shopping as {{user.name}}</h5>
-    <h4>Cart</h4>
-    <ul class="order_list" *ngFor="let o of orderList.order" md-card>
-        <button md-button>{{o.name}}</button><span class="quantity">{{o.quantity}}</span>
-    </ul>
-    <button md-raised-button class="place_order_button" (click)="orderList.onOrderSubmit()">Place Order</button>
-    <span class="money">{{displayCost}}</span>
-  </div>
-  <div *ngIf="!orderList.order_begun" id="order_card">
-    <h5>Shopping as {{user.name}}</h5>
-    <h4>Cart</h4><br />
-    <p>Nothing ordered yet! <br /></p>
-    <button md-raised-button disabled class="place_order_button">Place Order</button> <span class="money">0.00</span>
+  <div class="container" id="user_modules">
+    <div class="container" id="account_info">
+      <a [routerLink]="['/dashboard']"><h4>{{user.name}}</h4></a>
+      <p>
+        Email: {{user.email}} <br />
+        Username: {{user.username}}
+      </p>
+    </div>
+    <div class="container" id="user_lists">
+      <h4>Shopping Lists</h4>
+    </div>
   </div>
   <div class="container" id="itemList">
     <ul>
-      <li  class="container item-container" *ngFor="let i of items" md-card>
+      <li  class="container item-container" *ngFor="let i of items" md-card id="items">
         <div class="card">
           <h2>{{i.name}}</h2>
           <p>
@@ -42,6 +38,22 @@
         </div>
       </li>
     </ul>
+  </div>
+  <div class="container" id="order">
+    <div *ngIf="orderList.order_begun" id="order_card">
+      <!-- Going to want to extract this into a different component -->
+      <h4 style="text-align: center">Cart</h4>
+      <ul class="order_list" *ngFor="let o of orderList.order" md-card>
+          <button md-button>{{o.name}}</button><span class="quantity">{{o.quantity}}</span>
+      </ul>
+      <button md-raised-button class="place_order_button" (click)="orderList.onOrderSubmit()">Place Order</button>
+      <span class="money">{{displayCost}}</span>
+    </div>
+    <div *ngIf="!orderList.order_begun" id="order_card">
+      <h4 style="text-align: center">Cart</h4>
+      <ul id="no_order_yet">Nothing ordered yet!</ul><br />
+      <button md-raised-button disabled class="place_order_button">Place Order</button> <span class="money">0.00</span>
+    </div>
   </div>
 </body>
 </html>
