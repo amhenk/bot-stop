@@ -32,7 +32,8 @@
 }
 
 #past_order_module{
-  overflow: auto;
+  overflow: scroll;
+  height: inherit;
 }
 
 #recommended_items{

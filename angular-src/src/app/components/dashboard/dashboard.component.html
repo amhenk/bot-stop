@@ -54,6 +54,15 @@
             <ul *ngFor="let p of past_orders">
               <button md-button (click)="retrieveOrder(p._id)">Order {{p.order_number}} {{p.pickup_date}}</button>
             </ul>
+            <div class="container card">
+              <div *ngIf="temp">
+                {{temp.order_number}}
+                <ul *ngFor="let oi of order_items">
+                  {{oi.name}}
+                </ul>
+                {{temp.order_cost.toFixed(2)}}
+              </div>
+            </div>
         </div>
         <div id="upcoming_order_module" *ngIf="displayUpcomingOrders">
           <h1>Upcoming Orders</h1>

@@ -53,3 +53,8 @@ module.exports.getItemsByCategory = function(category, callback) {
 module.exports.addItem = function(newItem, callback){
   newItem.save(callback);
 }
+
+module.exports.getItemByItemNumber = function(item_number, callback) {
+  let query = {'item_id': item_number};
+  Inventory.find(query, callback);
+}

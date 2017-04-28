@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { OrderService } from '../../services/order.service';
+import { ItemService } from '../../services/item.service';
 
 import { User } from '../../user';
 import { Order } from '../../order';
+import { Item } from '../../item';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,8 @@ export class DashboardComponent implements OnInit {
   orders: Order[];
   past_orders: Order[] = [];
   future_orders: Order[] = [];
-  temp: Order = new Order();
+  temp: Order;
+  order_items: Object[] = [];
 
   /* Module Toggles */
   displayPastOrders: boolean = false;
@@ -30,6 +33,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private orderService: OrderService,
+    private itemService: ItemService,
     private router: Router
   ) { }
 
@@ -95,12 +99,23 @@ export class DashboardComponent implements OnInit {
     this.viewPastOrders();
     this.orderService.getOrderById(orderId).subscribe(order => {
       this.temp = order;
+      this.order_items = [];
       console.log('Order retrieved');
+      this.temp.items.forEach( (item_number) => {
+        this.itemService.getItemByItemNumber(item_number).subscribe(item => {
+          this.order_items.push(item[0]);
+        }, err => {
+          console.log(err);
+          return false;
+        });
+      });
+      console.log(this.order_items);
     },
     err => {
       console.log(err);
       return false;
     });
+
   }
 
 }
