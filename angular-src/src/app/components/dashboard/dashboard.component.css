@@ -21,10 +21,10 @@
 }
 
 #quick_shop{
-  position: absolute;
+  position: inherit;
   overflow: hidden;
-  margin-top: 27%;
-  margin-left:25%;
+  margin-top: 40%;
+  margin-left: -14px;
 }
 
 #main_module.container {
