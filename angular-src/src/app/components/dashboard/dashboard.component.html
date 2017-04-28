@@ -6,11 +6,11 @@
 <div class="dashboard-page">
   <div class="container page">
     <div class="row">
-      <div id="account_info" class="card">
-        <img src="http://placehold.it/150x100" style="border-radius: 4px" />
-        <h2>{{user.name}}</h2>
-      </div>
       <div id="module_container"class="card col-md-3" md-card>
+        <div id="account_info" class="card">
+          <img src="http://placehold.it/150x100" style="border-radius: 4px" />
+          <h2>{{user.name}}</h2>
+        </div>
         <div id="upcoming_orders" class="container">
           <button md-button><h4>Upcoming Orders</h4></button>
           <ul>
@@ -42,16 +42,17 @@
           </ul>
         </div>
       </div>
+      <div id="recommended_items" class="card">
+        <!-- This should be its own module -->
+        <h1>Recommended Items</h1>
+      </div>
       <div id="main_module" class="card container">
         <!-- TODO:  Switchable modules-->
         <!-- Default Recommended Items -->
-        <div id="recommended" *ngIf="displayRecommended">
-          <h1>Recommended Items</h1>
-        </div>
         <div id="past_order_module" *ngIf="displayPastOrders">
           <h1>Past Orders</h1>
           <ul>
-            <li *ngFor=
+            <!-- <li *ngFor= -->
           </ul>
         </div>
         <div id="upcoming_order_module" *ngIf="displayUpcomingOrders">
@@ -59,33 +60,34 @@
         </div>
         <div id="shopping_list_module" *ngIf="displayShoppingList">
           <h1>Shopping List</h1>
+          <!-- We need to turn this into it's own component -->
         </div>
-        <!-- Quick Select buttons -->
-        <div id="quick_shop" class="container">
-          <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
-            <h3>Browse Grocery</h3>
-            <ul class="quicklinks">
-                  <li><a>Pantry</a></li>
-                  <li><a>Dairy</a></li>
-                  <li><a>Beverages</a></li>
-            </ul>
-          </div>
-          <div class="card btn" id="shopHome" [routerLink]="['/store']">
-            <h3>Browse Home</h3>
-            <ul class="quicklinks">
-                  <li><a>Bathroom</a></li>
-                  <li><a>Kitchen</a></li>
-                  <li><a>Cleaning</a></li>
-            </ul>
-          </div>
-          <div class="card btn" id="shopHealth" [routerLink]="['/store']">
-            <h3>Browse Health</h3>
-            <ul class="quicklinks">
-                  <li><a>Beauty</a></li>
-                  <li><a>Medicine</a></li>
-                  <li><a>Nutrition</a></li>
-            </ul>
-          </div>
+      </div>
+      <!-- Quick Select buttons -->
+      <div id="quick_shop" class="container">
+        <div class="card btn" id="shopGrocery" [routerLink]="['/store']">
+          <h3>Browse Grocery</h3>
+          <ul class="quicklinks">
+                <li><a>Pantry</a></li>
+                <li><a>Dairy</a></li>
+                <li><a>Beverages</a></li>
+          </ul>
+        </div>
+        <div class="card btn" id="shopHome" [routerLink]="['/store']">
+          <h3>Browse Home</h3>
+          <ul class="quicklinks">
+                <li><a>Bathroom</a></li>
+                <li><a>Kitchen</a></li>
+                <li><a>Cleaning</a></li>
+          </ul>
+        </div>
+        <div class="card btn" id="shopHealth" [routerLink]="['/store']">
+          <h3>Browse Health</h3>
+          <ul class="quicklinks">
+                <li><a>Beauty</a></li>
+                <li><a>Medicine</a></li>
+                <li><a>Nutrition</a></li>
+          </ul>
         </div>
       </div>
     </div>

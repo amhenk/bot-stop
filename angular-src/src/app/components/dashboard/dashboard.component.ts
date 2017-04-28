@@ -21,11 +21,10 @@ export class DashboardComponent implements OnInit {
   temp: Order = new Order();
 
   /* Module Toggles */
-  displayRecommended: boolean = true
   displayPastOrders: boolean = false;
   displayUpcomingOrders: boolean = false;
   displayCreateScheduledOrder: boolean = false;
-  displayShoppingList: boolean = false;
+  displayShoppingList: boolean = true;
   displayCreateNewShoppingList: boolean = false;
 
   constructor(
@@ -74,7 +73,6 @@ export class DashboardComponent implements OnInit {
   }
 
   private setAllFalse(){
-    this.displayRecommended = false;
     this.displayPastOrders = false;
     this.displayUpcomingOrders = false;
     this.displayCreateScheduledOrder = false;
