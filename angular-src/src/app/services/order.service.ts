@@ -27,12 +27,22 @@ export class OrderService {
                 {headers: headers}).map(res => res.json());
   }
 
-  getOrder(cust_id){
+  getCustomerOrders(cust_id){
     let headers = new Headers();
     let params: URLSearchParams = new URLSearchParams();
     params.set('cust_id', cust_id);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:8080/handle_order/getOrder', {headers: headers, search: params})
+    return this.http.get('http://localhost:8080/handle_order/getCustomerOrders', {headers: headers, search: params})
+      .map(res => res.json());
+  }
+
+  getOrderById(orderId){
+    let headers = new Headers();
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('order_id', orderId);
+    headers.append('Content-Type', 'application/json');
+    // XXX: Really not sure about this .toString business at the end
+    return this.http.get('http://localhost:8080/handle_order/getOrderById', {headers: headers, search: params.toString()})
       .map(res => res.json());
   }
 

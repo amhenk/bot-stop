@@ -29,3 +29,8 @@ module.exports.getOrdersByCustomerId = function(customer_id, callback){
   const query = {'cust_id': customer_id};
   Order.find(query, callback);
 }
+
+module.exports.getOrderById = function(order_id, callback){
+  console.log(order_id);
+  Order.findById(order_id, callback);
+}

@@ -25,7 +25,7 @@ router.post('/addOrder', (req, res, next) => {
 });
 
 // Get orders by the customer id
-router.get('/getOrder', (req, res, next) => {
+router.get('/getCustomerOrders', (req, res, next) => {
   const customer_id = req.query.cust_id;
   order.getOrdersByCustomerId(customer_id, (err, orders) => {
     if(err){
@@ -34,7 +34,20 @@ router.get('/getOrder', (req, res, next) => {
       res.send(orders);
     }
   })
-})
+});
+
+router.get('/getOrderById', (req, res, next) => {
+  const order_id = req.query.order_id;
+  console.log(req);
+  order.getOrderById(order_id, (err, orders) => {
+    if(err){
+      throw err;
+    } else {
+      console.log(orders);
+      res.send(orders);
+    }
+  });
+});
 
 // Dummy request to make sure things are working
 router.get('/hello', (req, res, next) => {

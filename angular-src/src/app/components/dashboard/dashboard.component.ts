@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     this.authService.getProfile().subscribe(profile =>{
       this.user = profile.user;
 
-      this.orderService.getOrder(profile._id).subscribe(orders => {
+      this.orderService.getCustomerOrders(profile._id).subscribe(orders => {
         this.orders = orders;
         this.orders.forEach( (s) => {
           if("pickup_date" in s){
@@ -86,7 +86,21 @@ export class DashboardComponent implements OnInit {
   }
 
   startNewList(){
+    this.setAllFalse();
+    this.displayShoppingList = true;
     console.log("Whaddup");
+  }
+
+  retrieveOrder(orderId){
+    this.viewPastOrders();
+    this.orderService.getOrderById(orderId).subscribe(order => {
+      this.temp = order;
+      console.log('Order retrieved');
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }

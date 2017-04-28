@@ -31,6 +31,10 @@
   margin-left: -50px;
 }
 
+#past_order_module{
+  overflow: auto;
+}
+
 #recommended_items{
   margin-left: 250px;
   width: 800px;
