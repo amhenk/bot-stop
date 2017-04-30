@@ -23,10 +23,17 @@
         <div id="past_order" class="container">
           <button md-button><h4>Past Orders</h4></button>
           <!-- <ul> -->
+          <div *ngIf="!past_orders.length > 1">
             <ul *ngFor="let p of past_orders; let i=index">
               <a *ngIf="i<3" (click)="retrieveOrder(p._id)">{{p.order_number}} {{p.pickup_date}}</a>
             </ul>
             <button md-button (click)="viewPastOrders()">View Past Orders</button>
+          </div>
+          <div *ngIf="past_orders.length == 0">
+            <ul>
+              No orders placed.
+            </ul>
+          </div>
           <!-- </ul> -->
         </div>
         <div id="shopping_lists" class="container">
