@@ -9,6 +9,8 @@ export class OrderService {
 
   placeOrder(cust_id, order, order_cost, order_number) {
     var item_array = []
+    var create_date = new Date(); // TODO: figure out how we get the pickup date jazz
+    var pickup_date = new Date();
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     for(var i = 0; i < order.length; i++){
@@ -20,9 +22,11 @@ export class OrderService {
       cust_id: cust_id,
       items: item_array,
       order_number: order_number,
-      order_cost: order_cost
+      order_cost: order_cost,
+      create_date: create_date, // TODO: figure out how we get the pickup date jazz
+      pickup_date: pickup_date
     };
-    console.log(newOrder);
+
     return this.http.post('http://localhost:8080/handle_order/addOrder', newOrder,
                 {headers: headers}).map(res => res.json());
   }

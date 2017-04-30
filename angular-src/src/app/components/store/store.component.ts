@@ -75,12 +75,14 @@ which item was selected.
         console.log('ITEM FOUND: ' + item.name);
         /* Item Quantity */
         if(this.orderList.order.find(i => i._id == item_id)){
+          // If the order exists find it and increase the quantity
           this.orderList.order_cost += +item.sales_price.toFixed(2);
           this.orderList.order.find(i=>i._id == item_id).quantity++;
           this.displayCost = ((this.orderList.order_cost * 100) / 100).toFixed(2).toString();
         }
         else
         {
+          // If the item doesn't exist in ther order already, add it.
           this.orderList.order.push(item);
           this.orderList.order.find(i => i._id == item_id).quantity = 1;
           this.orderList.order_cost += +item.sales_price.toFixed(2);

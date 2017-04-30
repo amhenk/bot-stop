@@ -24,7 +24,7 @@
           <button md-button><h4>Past Orders</h4></button>
           <!-- <ul> -->
             <ul *ngFor="let p of past_orders; let i=index">
-              <a *ngIf="i<3" (click)="retrieveOrder(p._id)">Order {{p.order_number}} {{p.pickup_date}}</a>
+              <a *ngIf="i<3" (click)="retrieveOrder(p._id)">{{p.order_number}} {{p.pickup_date}}</a>
             </ul>
             <button md-button (click)="viewPastOrders()">View Past Orders</button>
           <!-- </ul> -->

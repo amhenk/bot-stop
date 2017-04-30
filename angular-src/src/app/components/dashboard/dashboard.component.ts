@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
             var now = new Date().getTime().valueOf();
             if (s.pickup_date == null || pickupdate.getTime().valueOf() < now){
               s.pickup_date = (pickupdate.getMonth()+1) +'/'
-                              + pickupdate.getDay() + '/' + pickupdate.getFullYear()
+                              + pickupdate.getDate() + '/' + pickupdate.getFullYear()
                               + ' ' + pickupdate.getHours() + ':' + pickupdate.getMinutes();
               this.past_orders.push(s);
             }

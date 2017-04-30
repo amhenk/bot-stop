@@ -9,9 +9,11 @@ router.post('/addOrder', (req, res, next) => {
     customer_id : '',
     items: req.body.items,
     order_number: req.body.order_number,
-    order_cost: req.body.order_cost
+    order_cost: req.body.order_cost,
+    create_date: req.body.create_date,
+    pickup_date: req.body.pickup_date
   });
-
+  
   order.addOrder(newOrder,(err, order) => {
     if(err){
       console.log('order.js Returning nothing');
