@@ -17,13 +17,13 @@
             <ul *ngFor="let f of future_orders; let i=index">
               <span *ngIf="i<3">Order {{f.order_number}} {{f.pickup_date}}</span>
             </ul>
-            <a>Schedule Order</a>
+            <a (click)="scheduleOrder()">Schedule Order</a>
           </ul>
         </div>
         <div id="past_order" class="container">
           <button md-button><h4>Past Orders</h4></button>
           <!-- <ul> -->
-          <div *ngIf="!past_orders.length > 1">
+          <div *ngIf="past_orders.length > 0">
             <ul *ngFor="let p of past_orders; let i=index">
               <a *ngIf="i<3" (click)="retrieveOrder(p._id)">{{p.order_number}} {{p.pickup_date}}</a>
             </ul>

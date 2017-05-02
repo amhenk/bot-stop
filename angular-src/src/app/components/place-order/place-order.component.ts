@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // import { StoreComponent } from '../store/store.component';
-import { Item } from '../../item';
+import { Item } from '../../models/item.model';
 
 import { OrderService } from '../../services/order.service';
 import { ItemService } from '../../services/item.service';  // to look up items by Item ID

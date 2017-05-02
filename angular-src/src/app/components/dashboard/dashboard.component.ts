@@ -5,9 +5,9 @@ import { AuthService } from '../../services/auth.service';
 import { OrderService } from '../../services/order.service';
 import { ItemService } from '../../services/item.service';
 
-import { User } from '../../user';
-import { Order } from '../../order';
-import { Item } from '../../item';
+import { User } from '../../models/user.model';
+import { Order } from '../../models/order.model';
+import { Item } from '../../models/item.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -116,6 +116,10 @@ export class DashboardComponent implements OnInit {
       return false;
     });
 
+  }
+
+  scheduleOrder(){
+    console.log('Hello!');
   }
 
 }

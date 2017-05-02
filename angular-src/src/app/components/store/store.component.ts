@@ -5,9 +5,9 @@ import { AuthService } from '../../services/auth.service';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 /* Classes */
-import { Item } from '../../item';
-import { Order } from '../../order';
-import { User } from '../../user';
+import { Item } from '../../models/item.model';
+import { Order } from '../../models/order.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-store',
