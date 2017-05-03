@@ -50,4 +50,14 @@ export class OrderService {
       .map(res => res.json());
   }
 
+  scheduleOrder(pickup_date) {
+    let headers = new Headers();
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('pickup_date', pickup_date);
+    headers.append('Content-Type, ', 'application/json');
+
+    return this.http.get('http://localhost:8080/handle_order/scheduleOrder', {headers: headers,
+                          search: params}).map(res => res.json());
+  }
+
 }

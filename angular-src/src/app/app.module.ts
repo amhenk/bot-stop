@@ -25,6 +25,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { ScheduleOrderComponent } from './components/schedule-order/schedule-order.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     FeaturedItemsComponent,
     AddItemComponent,
     PlaceOrderComponent,
-    DashboardComponent
+    DashboardComponent,
+    ScheduleOrderComponent
   ],
   imports: [
     BrowserModule,
