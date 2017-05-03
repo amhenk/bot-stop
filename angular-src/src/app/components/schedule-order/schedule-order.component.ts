@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// import { DatePickerOptions, DateModel } from 'ng2-datepicker-bootstrap';
 
 import { OrderService } from '../../services/order.service';
 
@@ -12,7 +13,7 @@ import { Order } from '../../models/order.model';
   styleUrls: ['./schedule-order.component.css']
 })
 export class ScheduleOrderComponent implements OnInit {
-
+  model = Object;
   constructor() { }
 
   ngOnInit() {
