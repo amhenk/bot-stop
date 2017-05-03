@@ -46,7 +46,7 @@
       <ul class="order_list" *ngFor="let o of orderList.order" md-card>
           <button md-button>{{o.name}}</button><span class="quantity">{{o.quantity}}</span>
       </ul>
-      <button md-raised-button class="place_order_button" (click)="orderList.onOrderSubmit()">Place Order</button>
+      <button md-raised-button class="place_order_button" (click)="orderList.onOrderSubmit()" [routerLink]="['/dashboard']">Place Order</button>
       <span class="money">{{displayCost}}</span>
     </div>
     <div *ngIf="!orderList.order_begun" id="order_card">
