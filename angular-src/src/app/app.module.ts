@@ -15,6 +15,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ItemComponent } from './components/item/item.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { ScheduleOrderComponent } from './components/schedule-order/schedule-order.component';
 
 import { ItemService } from './services/item.service';
 import { OrderService } from './services/order.service';
@@ -23,9 +26,7 @@ import { ValidateService } from './services/validate.service';
 import { AuthGuard } from './guards/auth.guard';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { AddItemComponent } from './components/add-item/add-item.component';
-import { PlaceOrderComponent } from './components/place-order/place-order.component';
-import { ScheduleOrderComponent } from './components/schedule-order/schedule-order.component';
+import { DatePickerModule } from 'ng2-datepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    DatePickerModule
   ],
   providers: [
     ItemService,
