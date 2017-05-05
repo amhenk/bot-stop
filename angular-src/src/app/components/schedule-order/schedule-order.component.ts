@@ -22,10 +22,11 @@ export class ScheduleOrderComponent implements OnInit {
 
   ngOnInit() {
     this.options.initialDate = new Date();
-    this.options.minDate = new Date();
-    // this.date.day = new Date().getDate().toString();
-    // this.date.year = new Date().getFullYear().toString();
-    // this.date.month = new Date().getMonth().toString();
+  }
+
+  sendDateToStore(){
+    console.log(this.date);
+    //TODO: Setup method for partial orders.
   }
 
 }

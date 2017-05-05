@@ -1,1 +1,4 @@
 <ng2-datepicker options="options" [(ngModel)]="date"></ng2-datepicker>
+<div *ngIf="date">
+  <button md-button [routerLink]="['/store']" (click)="sendDateToStore()">Begin Order</button>
+</div>
