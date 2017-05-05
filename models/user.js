@@ -22,6 +22,10 @@ const UserSchema = mongoose.Schema({
   orders: {
     type: Array,
     required: false
+  },
+  shopping_lists: {
+    type: mongoose.Schema.Types.Mixed,
+    required: false
   }
 });
 
@@ -51,4 +55,9 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
     if(err) throw err;
     callback(null, isMatch);
   });
+}
+
+module.exports.addShoppingList = function(id, shopping_list, callback){
+  const query = {'_id': id, '$push': {'shopping_lists': shopping_list}};
+  User.findOneAndUpdate(query, callback);
 }
