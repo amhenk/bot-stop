@@ -78,6 +78,10 @@
           <h1>Shopping List</h1>
           <!-- We need to turn this into it's own component -->
         </div>
+        <div id="schedule_order_module" *ngIf="displayCreateScheduledOrder">
+          <h1>Schedule Order</h1>
+          <schedule-order></schedule-order>
+        </div>
       </div>
       <!-- Quick Select buttons -->
       <div id="quick_shop" class="container">

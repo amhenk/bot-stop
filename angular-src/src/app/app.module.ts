@@ -69,6 +69,9 @@ const appRoutes: Routes = [
     ValidateService,
     AuthGuard
   ],
+  entryComponents: [
+    ScheduleOrderComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

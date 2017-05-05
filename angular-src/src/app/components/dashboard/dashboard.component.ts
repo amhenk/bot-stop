@@ -120,6 +120,8 @@ export class DashboardComponent implements OnInit {
 
   scheduleOrder(){
     console.log('Hello!');
+    this.setAllFalse();
+    this.displayCreateScheduledOrder = true;
   }
 
 }
