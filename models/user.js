@@ -61,3 +61,8 @@ module.exports.addShoppingList = function(id, shopping_list, callback){
   const query = {'_id': id, '$push': {'shopping_lists': shopping_list}};
   User.findOneAndUpdate(query, callback);
 }
+
+module.exports.removeShoppingList = function(id, shopping_list_name, callback){
+  const query = {'_id': id, '$pull': {'shopping_list.$.name': shopping_list_name}};
+  User.findOneAndUpdate(query, callback);
+}
