@@ -27,6 +27,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DatePickerModule } from 'ng2-datepicker';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     AddItemComponent,
     PlaceOrderComponent,
     DashboardComponent,
-    ScheduleOrderComponent
+    ScheduleOrderComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule,
