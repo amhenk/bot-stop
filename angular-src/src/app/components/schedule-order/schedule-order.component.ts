@@ -17,6 +17,7 @@ export class ScheduleOrderComponent implements OnInit {
   options: DatePickerOptions;
   constructor(private orderService: OrderService) {
     this.options = new DatePickerOptions();
+    this.options.format = 'MM/DD/YYYY';
   }
 
 
@@ -28,7 +29,8 @@ export class ScheduleOrderComponent implements OnInit {
     console.log(this.date);
     //TODO: Setup method for partial orders.
     //TODO: Load current user's selected list
-    this.orderService.scheduleOrder(this.date.formatted);
+    var date_string = this.date.month + '/' + this.date.day +'/' + this.date.year;
+    this.orderService.scheduleOrder(date_string);
   }
 
 }

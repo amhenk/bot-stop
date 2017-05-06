@@ -42,6 +42,13 @@ export class StoreComponent implements OnInit {
       TODO: Need to modify this so we handle guest transactions and signed in folks
      */
     this.pickup_date = this.orderService.retrieveScheduledOrder();
+    if(this.pickup_date == null){
+      var temp = new Date();
+      this.pickup_date = (temp.getMonth()+1) +'/'
+                      + temp.getDate() + '/' + temp.getFullYear()
+                      + ' ' + temp.getHours() + ':' + temp.getMinutes();
+    }
+
     console.log('Pickup Date: ' + this.pickup_date.toString());
     if(this.authService.loggedIn()){
       this.authService.getProfile().subscribe(profile => {

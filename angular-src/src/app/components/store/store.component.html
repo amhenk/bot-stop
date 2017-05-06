@@ -42,7 +42,7 @@
   <div class="container" id="order">
     <div *ngIf="orderList.order_begun" id="order_card">
       <!-- Going to want to extract this into a different component -->
-      <h4 style="text-align: center">Cart</h4>
+      <h4 style="text-align: center">Cart for {{pickup_date}}</h4>
       <ul class="order_list" *ngFor="let o of orderList.order" md-card>
           <button md-button>{{o.name}}</button><span class="quantity">{{o.quantity}}</span>
       </ul>
@@ -50,7 +50,7 @@
       <span class="money">{{displayCost}}</span>
     </div>
     <div *ngIf="!orderList.order_begun" id="order_card">
-      <h4 style="text-align: center">Cart</h4>
+      <h4 style="text-align: center">Cart for {{pickup_date}}</h4>
       <ul id="no_order_yet">Nothing ordered yet!</ul><br />
       <button md-raised-button disabled class="place_order_button">Place Order</button> <span class="money">0.00</span>
     </div>
