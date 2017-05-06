@@ -13,7 +13,7 @@ router.post('/addOrder', (req, res, next) => {
     create_date: req.body.create_date,
     pickup_date: req.body.pickup_date
   });
-  
+
   order.addOrder(newOrder,(err, order) => {
     if(err){
       console.log('order.js Returning nothing');

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { AuthService } from '../../services/auth.service';
 
+import { OrderService } from '../../services/order.service';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 /* Classes */
@@ -19,25 +20,29 @@ export class StoreComponent implements OnInit {
   items: Item[] = [];
   categories: string[] =[];
   displayCost: String;
+  pickup_date: String;
   itemDict: Dictionary = {};
 
   order: Item[] = [];
 
   user: User = new User();
   loggedIn: boolean;
+
   // Still need to find a use for this, might be relevant later.
   // @Output() result = new EventEmitter<Item>();
 
   constructor(private inventory: ItemService,
               private orderList: PlaceOrderComponent,
-              private authService: AuthService
+              private authService: AuthService,
+              private orderService: OrderService
   ) { }
 
   ngOnInit() {
     /*
       TODO: Need to modify this so we handle guest transactions and signed in folks
      */
-
+    this.pickup_date = this.orderService.retrieveScheduledOrder();
+    console.log('Pickup Date: ' + this.pickup_date.toString());
     if(this.authService.loggedIn()){
       this.authService.getProfile().subscribe(profile => {
         this.user = profile.user;

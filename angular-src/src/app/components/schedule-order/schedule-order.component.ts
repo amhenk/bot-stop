@@ -15,7 +15,7 @@ import { Order } from '../../models/order.model';
 export class ScheduleOrderComponent implements OnInit {
   @Input() date: DateModel;
   options: DatePickerOptions;
-  constructor() {
+  constructor(private orderService: OrderService) {
     this.options = new DatePickerOptions();
   }
 
@@ -27,6 +27,8 @@ export class ScheduleOrderComponent implements OnInit {
   sendDateToStore(){
     console.log(this.date);
     //TODO: Setup method for partial orders.
+    //TODO: Load current user's selected list
+    this.orderService.scheduleOrder(this.date.formatted);
   }
 
 }

@@ -12,6 +12,11 @@ export class OrderService {
     var create_date = new Date(); // TODO: figure out how we get the pickup date jazz
     var pickup_date = new Date();
     const headers = new Headers();
+
+    // clear any stored order data
+    // TODO: Find better way to represent this information
+    localStorage.removeItem('order_pickup_date');
+
     headers.append('Content-Type', 'application/json');
     for(var i = 0; i < order.length; i++){
       for( var j = 0; j < order[i].quantity; j++){
@@ -51,13 +56,11 @@ export class OrderService {
   }
 
   scheduleOrder(pickup_date) {
-    let headers = new Headers();
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('pickup_date', pickup_date);
-    headers.append('Content-Type, ', 'application/json');
+    localStorage.setItem('order_pickup_date', pickup_date);
+  }
 
-    return this.http.get('http://localhost:8080/handle_order/scheduleOrder', {headers: headers,
-                          search: params}).map(res => res.json());
+  retrieveScheduledOrder() {
+    return localStorage.getItem('order_pickup_date');
   }
 
 }
