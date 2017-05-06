@@ -26,10 +26,15 @@ export class ScheduleOrderComponent implements OnInit {
   }
 
   sendDateToStore(){
+    function addZero(num) {
+      return (num >= 0 && num < 10) ? "0" + num : num + "";
+    }
     console.log(this.date);
     //TODO: Setup method for partial orders.
     //TODO: Load current user's selected list
-    var date_string = this.date.month + '/' + this.date.day +'/' + this.date.year;
+    var d = new Date(Date.parse(this.date.formatted));
+    var date_string = addZero(d.getMonth()+1) + '/' + addZero(d.getDate()) +'/' + d.getFullYear()
+                + ' ' + addZero(d.getHours()) + ':' + addZero(d.getMinutes());
     // this.orderService.scheduleOrder(date_string);
     localStorage.setItem('order_pickup_date', date_string);
   }

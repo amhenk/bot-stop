@@ -38,18 +38,20 @@ export class StoreComponent implements OnInit {
               private orderList: PlaceOrderComponent,
               private authService: AuthService,
               private orderService: OrderService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     /*
       TODO: Need to modify this so we handle guest transactions and signed in folks
      */
-    this.pickup_date = this.orderService.retrieveScheduledOrder();
-    console.log(this.pickup_date);
-    if(this.pickup_date == null){
+    this.orderList.order_date = this.orderService.retrieveScheduledOrder();
+    console.log(this.orderList.order_date);
+    if(this.orderList.order_date == null){
       this.scheduledOrder = false;
       var temp = new Date();
-      this.pickup_date = (temp.getMonth()+1) +'/'
+      this.orderList.order_date = (temp.getMonth()+1) +'/'
                       + temp.getDate() + '/' + temp.getFullYear()
                       + ' ' + temp.getHours() + ':' + temp.getMinutes();
     }
@@ -57,7 +59,7 @@ export class StoreComponent implements OnInit {
       this.scheduledOrder = true;
     }
 
-    console.log('Pickup Date: ' + this.pickup_date.toString());
+    console.log('Pickup Date: ' + this.orderList.order_date.toString());
     if(this.authService.loggedIn()){
       this.authService.getProfile().subscribe(profile => {
         this.user = profile.user;
@@ -70,7 +72,7 @@ export class StoreComponent implements OnInit {
     }
 
     this.inventory.getAllItems().subscribe(inventory => {
-      this.orderList.order = [];
+      this.orderList.order_items = [];
       this.items = inventory;
       this.displayCost = "0.00";
 
@@ -94,17 +96,17 @@ which item was selected.
     this.inventory.getItemById(item_id).subscribe(item => {
         console.log('ITEM FOUND: ' + item.name);
         /* Item Quantity */
-        if(this.orderList.order.find(i => i._id == item_id)){
+        if(this.orderList.order_items.find(i => i._id == item_id)){
           // If the order exists find it and increase the quantity
           this.orderList.order_cost += +item.sales_price.toFixed(2);
-          this.orderList.order.find(i=>i._id == item_id).quantity++;
+          this.orderList.order_items.find(i=>i._id == item_id).quantity++;
           this.displayCost = ((this.orderList.order_cost * 100) / 100).toFixed(2).toString();
         }
         else
         {
           // If the item doesn't exist in ther order already, add it.
-          this.orderList.order.push(item);
-          this.orderList.order.find(i => i._id == item_id).quantity = 1;
+          this.orderList.order_items.push(item);
+          this.orderList.order_items.find(i => i._id == item_id).quantity = 1;
           this.orderList.order_cost += +item.sales_price.toFixed(2);
           this.displayCost = ((this.orderList.order_cost * 100) / 100).toFixed(2).toString();
         }

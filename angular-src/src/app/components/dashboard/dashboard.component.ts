@@ -64,6 +64,7 @@ export class DashboardComponent implements OnInit {
           }
         });
         console.log(orders);
+        console.log(this.future_orders);
       },
       err => {
           console.log(err);

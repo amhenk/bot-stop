@@ -7,16 +7,15 @@ export class OrderService {
 
   constructor(private http: Http) { }
 
-  placeOrder(cust_id, order, order_cost, order_number) {
+  placeOrder(cust_id, order, order_cost, order_number, order_date) {
     var item_array = []
     var create_date = new Date(); // TODO: figure out how we get the pickup date jazz
-    var pickup_date = new Date();
     const headers = new Headers();
 
     // clear any stored order data
     // TODO: Find better way to represent this information
     localStorage.removeItem('order_pickup_date');
-
+    console.log(order_date);
     headers.append('Content-Type', 'application/json');
     for(var i = 0; i < order.length; i++){
       for( var j = 0; j < order[i].quantity; j++){
@@ -29,7 +28,7 @@ export class OrderService {
       order_number: order_number,
       order_cost: order_cost,
       create_date: create_date, // TODO: figure out how we get the pickup date jazz
-      pickup_date: pickup_date
+      pickup_date: order_date
     };
 
     return this.http.post('http://localhost:8080/handle_order/addOrder', newOrder,
