@@ -55,12 +55,16 @@ export class OrderService {
       .map(res => res.json());
   }
 
+  // Just add it to local storage
+  // TODO: Stop ordering for scheduled order
   scheduleOrder(pickup_date) {
+    // localStorage.removeItem('order_pickup_date');
     localStorage.setItem('order_pickup_date', pickup_date);
   }
 
   retrieveScheduledOrder() {
-    return localStorage.getItem('order_pickup_date');
+    const date = localStorage.getItem('order_pickup_date');
+    return date;
   }
 
 }

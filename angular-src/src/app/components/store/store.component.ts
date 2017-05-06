@@ -28,6 +28,9 @@ export class StoreComponent implements OnInit {
   user: User = new User();
   loggedIn: boolean;
 
+  //XXX: Use this for now, can probably move this logic into the order component
+  scheduledOrder: boolean;
+
   // Still need to find a use for this, might be relevant later.
   // @Output() result = new EventEmitter<Item>();
 
@@ -42,11 +45,16 @@ export class StoreComponent implements OnInit {
       TODO: Need to modify this so we handle guest transactions and signed in folks
      */
     this.pickup_date = this.orderService.retrieveScheduledOrder();
+    console.log(this.pickup_date);
     if(this.pickup_date == null){
+      this.scheduledOrder = false;
       var temp = new Date();
       this.pickup_date = (temp.getMonth()+1) +'/'
                       + temp.getDate() + '/' + temp.getFullYear()
                       + ' ' + temp.getHours() + ':' + temp.getMinutes();
+    }
+    else {
+      this.scheduledOrder = true;
     }
 
     console.log('Pickup Date: ' + this.pickup_date.toString());
@@ -110,6 +118,10 @@ which item was selected.
       this.orderList.order_begun = true;
     }
     // TODO: Might want to add emitter here and we can use place-order component
+  }
+
+  scheduleLater() {
+
   }
 
 }

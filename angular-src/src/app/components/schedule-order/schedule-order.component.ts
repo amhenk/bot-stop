@@ -30,7 +30,8 @@ export class ScheduleOrderComponent implements OnInit {
     //TODO: Setup method for partial orders.
     //TODO: Load current user's selected list
     var date_string = this.date.month + '/' + this.date.day +'/' + this.date.year;
-    this.orderService.scheduleOrder(date_string);
+    // this.orderService.scheduleOrder(date_string);
+    localStorage.setItem('order_pickup_date', date_string);
   }
 
 }

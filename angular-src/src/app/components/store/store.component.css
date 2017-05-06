@@ -62,12 +62,17 @@
 
 .money{
   position: absolute;
-  bottom:11px;
+  bottom:45px;
   right: 20px;
   text-align: right;
 }
 
-.card{
+.card {
+  border-radius: 4px;
+  background: #fff;
+}
+
+.item_card{
   background: #fff;
   border-radius: 4px;
   display: inline-block;
@@ -79,7 +84,7 @@
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.card:hover {
+.item_card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -128,12 +133,24 @@ button.place_order_button{
   width: 120px;
   height: 40px;
   margin-left: auto;
-  bottom: 0;
+  bottom: 2px;
 }
 
 button.place_order_button:hover{
   /*background-color: #26a740;*/
   /*color: yellow;*/
+  font-weight: 700;
+}
+
+button.schedule_later{
+    position: absolute;
+    width: 125px;
+    height: 40px;
+    margin-left: 130px;
+    bottom: 2px;
+}
+
+button.schedule_later:hover{
   font-weight: 700;
 }
 
