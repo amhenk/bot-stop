@@ -6,15 +6,70 @@
       <p>No items in list.</p>
     </div>
     <div *ngIf="items.length != 0">
-      <table *ngFor="let i of items">
-        <td>
-          {{i}}
-        </td>
+      <table *ngFor="let i of items" class="table" style="width: 120px; height: 36px;">
+        <tr class="item" (click)="displayItemInfo(i)">
+          <td >
+            {{i.name}}
+          </td>
+          <td>
+            {{i.sales_price}}
+          </td>
+        </tr>
       </table>
     </div>
   </div>
   <div class="row">
     <flash-messages class="col-md-4"></flash-messages>
+  </div>
+  <div class="container user_items" *ngIf="curr_item_list.length != 0">
+    <table class="table" style="width: 550px">
+      <tr>
+        <th>Name</th>
+        <th>Sales Price</th>
+        <th>In Stock</th>
+        <th>Automated</th>
+      </tr>
+      <tr class="item" *ngFor="let ci of curr_item_list" (click)="addItemToList(ci)">
+        <td>
+          {{ci.name}}
+        </td>
+        <td>
+          {{ci.sales_price}}
+        </td>
+        <td>
+          {{ci.left_in_stock}}
+        </td>
+        <td>
+          {{ci.automated}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="container user_items" *ngIf="current_item != null">
+    <table class="table" style="width: 550px">
+      <tr>
+        <th>Name</th>
+        <th>Sales Price</th>
+        <th>In Stock</th>
+        <th>Automated</th>
+      </tr>
+      <tr class="item">
+        <td>
+          {{current_item.name}}
+        </td>
+        <td>
+          {{current_item.sales_price}}
+        </td>
+        <td>
+          {{current_item.left_in_stock}}
+        </td>
+        <td>
+          {{current_item.automated}}
+        </td>
+      </tr>
+    </table>
+    <button class="btn btn-danger" (click)="removeSelectedItem()">Remove Item</button>
+    <!-- TODO: This would be where we show nutrition info -->
   </div>
   <form>
     <div class="form-group error">
