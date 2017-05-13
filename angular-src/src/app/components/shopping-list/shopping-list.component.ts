@@ -33,6 +33,7 @@ export class ShoppingListComponent implements OnInit {
       this.flashMessage.show('Please input an item', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
+    this.current_item = null;
     this.itemService.getItemsByName(this.item_name).subscribe(items => {
       this.curr_item_list = items;
       console.log(this.curr_item_list);
