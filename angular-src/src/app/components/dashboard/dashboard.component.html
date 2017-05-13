@@ -12,14 +12,19 @@
           <h2>{{user.name}}</h2>
         </div>
         <div id="upcoming_orders" class="container">
-          <button md-button><h4>Upcoming Orders</h4></button>
+          <!-- <button md-button><h4>Upcoming Orders</h4></button> -->
+          <h4>Upcoming Orders</h4>
+          <div>
             <ul *ngFor="let f of future_orders; let i=index">
               <a *ngIf="i<3">{{f.order_number}} {{f.pickup_date}}</a>
             </ul>
-            <button md-button (click)="scheduleOrder()">Schedule Order</button>
+            <ul>
+              <a (click)="scheduleOrder()">Schedule Order</a>
+            </ul>
+          </div>
         </div>
         <div id="past_order" class="container">
-          <button md-button><h4>Past Orders</h4></button>
+          <h4>Past Orders</h4>
           <!-- <ul> -->
           <div *ngIf="past_orders.length > 0">
             <ul *ngFor="let p of past_orders; let i=index">
@@ -35,7 +40,7 @@
           <!-- </ul> -->
         </div>
         <div id="shopping_lists" class="container">
-          <button md-button><h4>Shopping List</h4></button>
+          <h4>Shopping List</h4>
           <ul>
             <li>
               Sunday List
