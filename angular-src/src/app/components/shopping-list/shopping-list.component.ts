@@ -15,6 +15,7 @@ export class ShoppingListComponent implements OnInit {
   item_name: String;
   curr_item_list: Item[];
   current_item: Item;
+  list_name: String;
 
   constructor(private itemService: ItemService,
               private flashMessage: FlashMessagesService
@@ -24,6 +25,7 @@ export class ShoppingListComponent implements OnInit {
     this.item_name = 'Milk';
     this.curr_item_list = [];
     this.current_item = null;
+    this.list_name = 'New Shopping List';
     this.searchUserItem();
   }
 
