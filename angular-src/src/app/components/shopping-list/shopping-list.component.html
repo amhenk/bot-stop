@@ -1,3 +1,10 @@
-<p>
-  shopping-list works!
-</p>
+<div class="container">
+  <h1>Shopping List</h1>
+  <form>
+    <div class="form-group clear">
+      <label for="name">Item Name</label>
+      <input type="text" class="form-control" id="name" required />
+    </div>
+    <button md-fab class="add_item" (click)="addItemToList()"><md-icon>add</md-icon></button>
+  </form>
+</div>

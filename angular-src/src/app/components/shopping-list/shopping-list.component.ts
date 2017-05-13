@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ItemService } from '../../services/item.service';
 
 @Component({
@@ -7,10 +8,14 @@ import { ItemService } from '../../services/item.service';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-
-  constructor() { }
+  form: FormGroup;
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+  }
+
+  addItemToOrder(){
+    
   }
 
 }
