@@ -20,7 +20,21 @@ input{
   margin-bottom: auto;
 }
 
-.btn-primary {
+.user_items{
+  position:absolute;
+  float: right;
+  margin-left: 225px;
+  margin-top: -39px;
+  overflow: auto;
+}
+
+.list-control {
+  display: inline;
+  position: relative;
+  margin-top: 10px;
+}
+
+#searchItem {
   display: block;
   float: left;
   width: 40px;
@@ -28,10 +42,15 @@ input{
   margin: -1px -2px -2px;
 }
 
-.user_items{
+#shopping-list {
   position: absolute;
-  /*display: block;*/
-  /*float: right;*/
-  margin-left: 225px;
-  margin-top: -39px;
+  display: block;
+}
+#shopping-list.item {
+  margin-bottom: 2px;
+}
+
+#automated {
+  height: 20px;
+  width: 20px;
 }

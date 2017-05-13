@@ -87,6 +87,8 @@ export class DashboardComponent implements OnInit {
 
   viewPastOrders(){
     this.setAllFalse();
+    this.order_items = [];
+    this.temp = null;
     this.displayPastOrders = true;
   }
 

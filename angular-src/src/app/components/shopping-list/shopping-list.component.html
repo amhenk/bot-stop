@@ -1,22 +1,38 @@
-<div class="container">
+<div class="page">
   <h1>Shopping List</h1>
-  <div class="container">
-    <!-- The actual shopping list part  -->
-    <div *ngIf="items.length == 0">
-      <p>No items in list.</p>
+  <div id="shopping-list" class="container">
+    <div class="container">
+      <!-- The actual shopping list part  -->
+      <div *ngIf="items.length == 0">
+        <p>No items in list.</p>
+      </div>
+      <div *ngIf="items.length != 0">
+        <table *ngFor="let i of items" class="table" style="width: 120px; height: 36px;">
+          <tr class="item" (click)="displayItemInfo(i)">
+            <td >
+              {{i.name}}
+            </td>
+            <td>
+              {{i.sales_price}}
+            </td>
+            <td>
+              <div *ngIf="i.automated">
+                <button id="automated" class="btn btn-disabled glyphicon glyphicon-ok-sign"></button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div *ngIf="items.length != 0">
-      <table *ngFor="let i of items" class="table" style="width: 120px; height: 36px;">
-        <tr class="item" (click)="displayItemInfo(i)">
-          <td >
-            {{i.name}}
-          </td>
-          <td>
-            {{i.sales_price}}
-          </td>
-        </tr>
-      </table>
-    </div>
+    <form>
+      <div class="form-group error">
+          <input type="text" id="itemText" class="form-control" name="item_name" [(ngModel)]="item_name" required />
+          <button id="searchItem" class="btn btn-primary glypicon glyphicon-plus" (click)="searchUserItem()"></button>
+      </div>
+    </form>
+    <br /><br />
+    <button class="btn btn-primary list-control" (click)="updateUserList()">Save List <span class="glyphicon glyphicon-save"></span></button>
+    <button class="btn btn-danger list-control" (click)="removeUserList()">Delete List <span class="glyphicon glyphicon-remove" ></span></button>
   </div>
   <div class="row">
     <flash-messages class="col-md-4"></flash-messages>
@@ -71,10 +87,4 @@
     <button class="btn btn-danger" (click)="removeSelectedItem()">Remove Item</button>
     <!-- TODO: This would be where we show nutrition info -->
   </div>
-  <form>
-    <div class="form-group error">
-        <input type="text" id="itemText" class="form-control" name="item_name" [(ngModel)]="item_name" required />
-        <button class="btn btn-primary glypicon glyphicon-plus" (click)="getUserSelectedItem()"></button>
-    </div>
-  </form>
 </div>

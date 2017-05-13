@@ -20,7 +20,7 @@ TODO:
   Overhaul this guy to work with Order class
  */
 @Component({
-  selector: 'app-place-order',
+  selector: 'place-order',
   templateUrl: './place-order.component.html',
   styleUrls: ['./place-order.component.css']
 })

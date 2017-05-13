@@ -24,10 +24,10 @@ export class ShoppingListComponent implements OnInit {
     this.item_name = 'Milk';
     this.curr_item_list = [];
     this.current_item = null;
-    this.getUserSelectedItem();
+    this.searchUserItem();
   }
 
-  getUserSelectedItem() {
+  searchUserItem() {
     if(this.item_name.length < 1) {
       console.log('No item to add');
       this.flashMessage.show('Please input an item', {cssClass: 'alert-danger', timeout: 3000});
@@ -69,6 +69,14 @@ export class ShoppingListComponent implements OnInit {
         this.current_item = null;
       }
     }
+  }
+
+  updateUserList() {
+    // TODO: Add/update list to the current user
+  }
+
+  removeUserList() {
+    // TODO: Remove list from the current user
   }
 
 }
