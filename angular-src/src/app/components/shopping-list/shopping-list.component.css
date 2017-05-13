@@ -1,11 +1,6 @@
-/*.clear {
-  clear:both;
-}*/
-
-.form {
-  position: relative;
-  z-index: 10;
-  margin-bottom: auto;
+flash-messages {
+  position: inherit;
+  width: 200px;
 }
 
 input{
@@ -14,11 +9,17 @@ input{
   width: 150px;
 }
 
+.form {
+  position: relative;
+  z-index: 10;
+  margin-bottom: auto;
+}
+
 .btn {
   display: block;
   float: left;
-  /*width: 40px;
-  height: 42px;*/
+  width: 40px;
+  height: 42px;
   margin: -1px -2px -2px;
 }
 
