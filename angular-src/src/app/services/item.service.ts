@@ -49,4 +49,13 @@ export class ItemService {
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:8080/store/inventory/getItemByItemNumber', {headers: headers, search: params}).map(res => res.json());
   }
+
+  getItemsByName(item_name) {
+    let headers = new Headers();
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('item_name', item_name);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:8080/store/inventory/getItemsByName',
+                {headers: headers, search: params}).map(res => res.json());
+  }
 }

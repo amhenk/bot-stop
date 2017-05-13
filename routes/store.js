@@ -52,6 +52,16 @@ router.get('/inventory/getItemByItemNumber', (req, res, next) => {
   });
 });
 
+router.get('/inventory/getItemsByName', (req, res, next) => {
+  inventory.getItemsByName(req.query.item_name, (err, items) => {
+    if(err) {
+      throw err;
+    } else {
+      res.send(items);
+    }
+  });
+});
+
 router.post('/addItem', (req, res, next) => {
   let newItem = new inventory({
     category: req.body.category,

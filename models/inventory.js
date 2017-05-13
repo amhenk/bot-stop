@@ -58,3 +58,8 @@ module.exports.getItemByItemNumber = function(item_number, callback) {
   let query = {'item_id': item_number};
   Inventory.find(query, callback);
 }
+
+module.exports.getItemsByName = function(item_name, callback) {
+  let query = {'name': {$regex: item_name, $options: 'i'}};
+  Inventory.find(query, callback);
+}
