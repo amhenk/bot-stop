@@ -72,7 +72,8 @@ const appRoutes: Routes = [
     AuthGuard
   ],
   entryComponents: [
-    ScheduleOrderComponent
+    ScheduleOrderComponent,
+    ShoppingListComponent
   ],
   bootstrap: [AppComponent]
 })

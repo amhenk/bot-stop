@@ -9,13 +9,17 @@ import { ItemService } from '../../services/item.service';
 })
 export class ShoppingListComponent implements OnInit {
   form: FormGroup;
+  items: String[] = [];
+  item_name: String;
+
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
   }
 
-  addItemToOrder(){
-    
+  addItemToList(){
+    console.log('Adding item: ' + this.item_name);
+    this.items.push(this.item_name);
   }
 
 }
