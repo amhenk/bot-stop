@@ -34,7 +34,8 @@
     </form>
     <br /><br />
     <button class="btn btn-primary list-control" (click)="updateUserList()">Save List <span class="glyphicon glyphicon-save"></span></button>
-    <button class="btn btn-danger list-control" (click)="removeUserList()">Delete List <span class="glyphicon glyphicon-remove" ></span></button>
+    <button *ngIf="!new_list" class="btn btn-danger list-control" (click)="removeUserList()">Delete List <span class="glyphicon glyphicon-remove" ></span></button>
+    <button *ngIf="new_list" class="btn btn-danger list-control" (click)="discardList()">Discard List <span class="glyphicon glyphicon-remove" ></span></button>
   </div>
   <div class="row">
     <flash-messages class="col-md-4"></flash-messages>

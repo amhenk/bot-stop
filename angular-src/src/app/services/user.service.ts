@@ -18,4 +18,8 @@ export class UserService {
     return this.http.post('http://localhost:8080/users/updateList', userList,
                     {headers: headers, search: {'user_id': this.user._id}}).map(res => res.json());
   }
+
+  removeUserList(list_name) {
+    console.log('Removing List: ' + list_name);
+  }
 }

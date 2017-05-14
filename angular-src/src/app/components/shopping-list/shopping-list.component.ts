@@ -19,6 +19,7 @@ export class ShoppingListComponent implements OnInit {
   curr_item_list: Item[];
   current_item: Item;
   list_name: String;
+  new_list: boolean;
 
   constructor(private itemService: ItemService,
               private flashMessage: FlashMessagesService,
@@ -27,6 +28,7 @@ export class ShoppingListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.new_list = true;
     this.item_name = 'Milk';
     this.curr_item_list = [];
     this.current_item = null;
@@ -84,7 +86,6 @@ export class ShoppingListComponent implements OnInit {
   }
 
   updateUserList() {
-    // TODO: Add/update list to the current user
     console.log('Updating list...');
     this.userService.saveUserList({ 'item_list': {'name': this.list_name, 'items': this.items}})
       .subscribe(data => {
@@ -95,8 +96,13 @@ export class ShoppingListComponent implements OnInit {
       });
   }
 
-  removeUserList() {
+  removeUserList(list_name) {
     // TODO: Remove list from the current user
+    this.userService.removeUserList(this.list_name);
+  }
+
+  discardList() {
+    this.items = [];
   }
 
 }
