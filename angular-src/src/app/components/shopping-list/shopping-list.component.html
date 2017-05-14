@@ -17,7 +17,7 @@
             </td>
             <td>
               <div *ngIf="i.automated">
-                <button id="automated" class="btn btn-disabled glyphicon glyphicon-ok-sign"></button>
+                <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
               </div>
             </td>
           </tr>
@@ -38,7 +38,7 @@
     <flash-messages class="col-md-4"></flash-messages>
   </div>
   <div class="container user_items" *ngIf="curr_item_list.length != 0">
-    <table class="table" style="width: 550px">
+    <table class="table" style="width: 545px">
       <tr>
         <th>Name</th>
         <th>Sales Price</th>
@@ -56,13 +56,18 @@
           {{ci.left_in_stock}}
         </td>
         <td>
-          {{ci.automated}}
+          <div *ngIf="ci.automated">
+            <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
+          </div>
+          <div *ngIf="!ci.automated">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
         </td>
       </tr>
     </table>
   </div>
   <div class="container user_items" *ngIf="current_item != null">
-    <table class="table" style="width: 550px">
+    <table class="table" style="width: 545px">
       <tr>
         <th>Name</th>
         <th>Sales Price</th>
@@ -80,7 +85,12 @@
           {{current_item.left_in_stock}}
         </td>
         <td>
-          {{current_item.automated}}
+          <div *ngIf="current_item.automated">
+            <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
+          </div>
+          <div *ngIf="!current_item.automated">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
         </td>
       </tr>
     </table>
