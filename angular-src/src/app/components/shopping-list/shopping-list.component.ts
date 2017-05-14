@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { Item } from '../../models/item.model';
+import { User } from '../../models/user.model';
 
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 import { ItemService } from '../../services/item.service';
 
 @Component({
@@ -16,17 +19,23 @@ export class ShoppingListComponent implements OnInit {
   curr_item_list: Item[];
   current_item: Item;
   list_name: String;
+  user: User;
 
   constructor(private itemService: ItemService,
-              private flashMessage: FlashMessagesService
+              private flashMessage: FlashMessagesService,
+              private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.item_name = 'Milk';
+    this.item_name = '';
     this.curr_item_list = [];
     this.current_item = null;
     this.list_name = 'New Shopping List';
-    this.searchUserItem();
+    this.authService.getProfile().subscribe(user => {
+      this.user = user.user;
+    }, err => {
+      throw err;
+    });
   }
 
   searchUserItem() {

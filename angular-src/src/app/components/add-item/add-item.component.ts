@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
-// import { FormGroup } from '@angular/forms';
 
+import { Item } from '../../models/item.model';
 /*
   TODO:
     - Have form clear fields instead of redirect to root
@@ -23,7 +23,7 @@ export class AddItemComponent implements OnInit {
   item_type: String;
   left_in_stock: Number;
   automated: Boolean;
-  // addItemForm: FormGroup;
+  items: Item[] = [];
 
   constructor(private itemService: ItemService,
               private router: Router,
@@ -31,6 +31,25 @@ export class AddItemComponent implements OnInit {
               //private addItemForm: NgForm) { }
 
   ngOnInit() {
+    this.updateItems();
+  }
+
+  updateItems() {
+    this.itemService.getAllItems().subscribe(items => {
+      this.items = items;
+    }, err => {
+      throw err;
+    })
+  }
+
+  clearForm() {
+    this.category = null;
+    this.name = null;
+    this.sales_price = null;
+    this.item_id = null;
+    this.item_type = null;
+    this.left_in_stock = null;
+    this.automated = null;
   }
 
   onItemSubmit() {
@@ -47,13 +66,12 @@ export class AddItemComponent implements OnInit {
     this.itemService.addItem(new_item).subscribe( data => {
       if(data.success){
         this.flashMessagesService.show('Item added!', {cssClass: 'alert-success', timeout: 3000, fade: true});
-        this.router.navigate(['/additem']);
-        this.router.navigate(['/']);
+        this.updateItems();
+        this.clearForm();
       }
       else {
         this.flashMessagesService.show('Item not added!', {cssClass: 'alert-danger', timeout: 3000, fade: true});
         console.log('Adding item failed');
-        this.router.navigate(['/']);
       }
     });
     // Clear form

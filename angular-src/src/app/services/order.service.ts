@@ -8,7 +8,7 @@ export class OrderService {
   constructor(private http: Http) { }
 
   placeOrder(cust_id, order, order_cost, order_number, order_date) {
-    var item_array = []
+    var item_array = [];
     var create_date = new Date(); // TODO: figure out how we get the pickup date jazz
     const headers = new Headers();
 

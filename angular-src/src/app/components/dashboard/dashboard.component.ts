@@ -63,8 +63,6 @@ export class DashboardComponent implements OnInit {
             console.log("No!");
           }
         });
-        console.log(orders);
-        console.log(this.future_orders);
       },
       err => {
           console.log(err);

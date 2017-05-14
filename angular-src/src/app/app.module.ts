@@ -24,6 +24,7 @@ import { OrderService } from './services/order.service';
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 import { AuthGuard } from './guards/auth.guard';
+import { UserService } from './services/user.service';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DatePickerModule } from 'ng2-datepicker';
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
     OrderService,
     AuthService,
     ValidateService,
+    UserService,
     AuthGuard
   ],
   entryComponents: [
