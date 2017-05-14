@@ -58,6 +58,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
 }
 
 module.exports.addShoppingList = function(id, shopping_list, callback){
+  console.log(shopping_list);
   const query = {'_id': id, '$push': {'shopping_lists': shopping_list}};
   User.findOneAndUpdate(query, callback);
 }

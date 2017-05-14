@@ -19,20 +19,21 @@ export class ShoppingListComponent implements OnInit {
   curr_item_list: Item[];
   current_item: Item;
   list_name: String;
-  user: User;
 
   constructor(private itemService: ItemService,
               private flashMessage: FlashMessagesService,
-              private authService: AuthService
+              private authService: AuthService,
+              private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.item_name = '';
+    this.item_name = 'Milk';
     this.curr_item_list = [];
     this.current_item = null;
+    this.searchUserItem();
     this.list_name = 'New Shopping List';
     this.authService.getProfile().subscribe(user => {
-      this.user = user.user;
+      this.userService.user = user.user;
     }, err => {
       throw err;
     });
@@ -84,6 +85,8 @@ export class ShoppingListComponent implements OnInit {
 
   updateUserList() {
     // TODO: Add/update list to the current user
+    console.log('Updating list...');
+    this.userService.saveUserList({ 'item_list': this.items});
   }
 
   removeUserList() {

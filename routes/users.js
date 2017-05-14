@@ -5,6 +5,16 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 
+// Profile
+router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, next) => {
+  res.json({user: req.user});
+});
+
+// Validate
+router.get('/validate', (req, res, next) => {
+  res.send('VALIDATE');
+});
+
 // Register router
 router.post('/register', (req, res, next) => {
   let newUser = new User({
@@ -60,14 +70,21 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
-// Profile
-router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, next) => {
-  res.json({user: req.user});
-});
+router.post('/updateList', (req, res, next) => {
+  console.log(req);
+  const itemList = req.body.item_list;
 
-// Validate
-router.get('/validate', (req, res, next) => {
-  res.send('VALIDATE');
+  User.addShoppingList(req.params.user._id, itemList, (err, itmes) => {
+    if(err) throw err;
+
+    if(!items){
+      console.log('List could not be added');
+      return res.json({success: false, msg:'List could not be added'});
+    }
+    console.log('Adding list...');
+    return res.json({success: true, msg:'List added!'});
+  });
+
 });
 
 module.exports = router;
