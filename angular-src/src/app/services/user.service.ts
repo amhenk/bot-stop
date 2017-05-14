@@ -10,11 +10,12 @@ export class UserService {
 
   saveUserList(userList) {
     console.log(userList);
+    console.log('UserService items: ' + userList.item_list.items)
     let headers = new Headers();
     let params: URLSearchParams = new URLSearchParams();
     params.set('user', this.user);
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/users/updateList', userList,
-                    {headers: headers, search: params}).map(res => res.json());
+                    {headers: headers, search: {'user_id': this.user._id}}).map(res => res.json());
   }
 }

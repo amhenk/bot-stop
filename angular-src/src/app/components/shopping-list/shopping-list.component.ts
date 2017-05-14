@@ -86,7 +86,13 @@ export class ShoppingListComponent implements OnInit {
   updateUserList() {
     // TODO: Add/update list to the current user
     console.log('Updating list...');
-    this.userService.saveUserList({ 'item_list': this.items});
+    this.userService.saveUserList({ 'item_list': {'name': this.list_name, 'items': this.items}})
+      .subscribe(data => {
+        console.log(data.msg);
+      }, err => {
+        console.log('Failed to save list');
+        return false;
+      });
   }
 
   removeUserList() {

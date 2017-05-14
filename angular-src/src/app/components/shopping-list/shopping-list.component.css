@@ -3,6 +3,16 @@ flash-messages {
   width: 200px;
 }
 
+.text-line {
+  background-color: transparent;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px;
+}
+
 input{
   display: block;
   float: left;

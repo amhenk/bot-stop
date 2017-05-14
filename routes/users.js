@@ -71,13 +71,15 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 router.post('/updateList', (req, res, next) => {
+  console.log('Hello!');
   console.log(req);
   const itemList = req.body.item_list;
-
-  User.addShoppingList(req.params.user._id, itemList, (err, itmes) => {
+  const user_id = req.query.user_id;
+  console.log(user_id);
+  User.addShoppingList(user_id, itemList, (err, user) => {
     if(err) throw err;
 
-    if(!items){
+    if(!user){
       console.log('List could not be added');
       return res.json({success: false, msg:'List could not be added'});
     }

@@ -40,12 +40,10 @@ router.get('/getCustomerOrders', (req, res, next) => {
 
 router.get('/getOrderById', (req, res, next) => {
   const order_id = req.query.order_id;
-  console.log(req);
   order.getOrderById(order_id, (err, orders) => {
     if(err){
       throw err;
     } else {
-      console.log(orders);
       res.send(orders);
     }
   });
