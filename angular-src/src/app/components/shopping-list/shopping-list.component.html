@@ -1,6 +1,7 @@
 <div class="page">
   <div id="listName" class="container">
-    <h4><input type="text" class="text-line" value="list_name" [(ngModel)]="list_name"/></h4>
+    <h4><input style="width: auto;"
+      type="text" class="text-line" value="list_name" [(ngModel)]="list_name"/></h4>
   </div>
   <div class="container" id="mainContent">
     <div id="shopping-list" class="container">
@@ -55,13 +56,12 @@
       </table>
     </div>
 
-    <div class="container user_items" *ngIf="current_item != null">
-      <table class="table" style="width: 545px">
+    <div id="user_items" class="container" *ngIf="current_item != null">
+      <table class="table">
         <tr>
-          <th>Name</th>
-          <th>Sales Price</th>
-          <th>In Stock</th>
-          <th>Automated</th>
+          <th style='width: 150px;'>Name</th>
+          <th style='width: 50px;'>Cost</th>
+          <th style='width: 50px;'>Auto</th>
         </tr>
         <tr class="item">
           <td>
@@ -70,10 +70,7 @@
           <td>
             {{current_item.sales_price}}
           </td>
-          <td>
-            {{current_item.left_in_stock}}
-          </td>
-          <td>
+          <td width="50px">
             <div *ngIf="current_item.automated">
               <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
             </div>
