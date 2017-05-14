@@ -2,102 +2,100 @@
   <div id="listName" class="container">
     <h4><input type="text" class="text-line" value="list_name" [(ngModel)]="list_name"/></h4>
   </div>
-  <div id="shopping-list" class="container">
-    <div class="container">
-      <!-- The actual shopping list part  -->
-      <div *ngIf="items.length == 0">
-        <p>No items in list.</p>
-      </div>
-      <div *ngIf="items.length != 0">
-        <table *ngFor="let i of items" class="table" style="width: 120px; height: 36px;">
-          <tr class="item" (click)="displayItemInfo(i)">
-            <td >
-              {{i.name}}
-            </td>
-            <td>
-              {{i.sales_price}}
-            </td>
-            <td>
-              <div *ngIf="i.automated">
-                <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
-              </div>
-            </td>
-          </tr>
-        </table>
+  <div class="container" id="mainContent">
+    <div id="shopping-list" class="container">
+      <div class="container">
+        <!-- The actual shopping list part  -->
+        <div *ngIf="items.length == 0">
+          <p>No items in list.</p>
+        </div>
+        <div *ngIf="items.length != 0">
+          <table id="listTable" *ngFor="let i of items" class="table table-hover">
+            <tr class="item" (click)="displayItemInfo(i)" style="width: 120px; height: 36px;">
+              <td style='width: 150px;'>
+                {{i.name}}
+              </td>
+              <td style='width: 50px;'>
+                {{i.sales_price}}
+              </td>
+              <td style='width: 50px;'>
+                <div *ngIf="i.automated">
+                  <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-    <form>
-      <div class="form-group error">
-          <input type="text" id="itemText" class="form-control" name="item_name" [(ngModel)]="item_name" required />
-          <button id="searchItem" class="btn btn-primary glypicon glyphicon-plus" (click)="searchUserItem()"></button>
+
+    <div id="user_items" class="container" *ngIf="curr_item_list.length != 0">
+      <table class="table">
+        <tr>
+          <th style='width: 150px;'>Name</th>
+          <th style='width: 50px;'>Cost</th>
+          <th style='width: 50px;'>Auto</th>
+        </tr>
+        <tr class="item" *ngFor="let ci of curr_item_list" (click)="addItemToList(ci)">
+          <td>
+            {{ci.name}}
+          </td>
+          <td>
+            {{ci.sales_price}}
+          </td>
+          <td width="50px">
+            <div *ngIf="ci.automated">
+              <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
+            </div>
+            <div *ngIf="!ci.automated">
+              <span class="glyphicon glyphicon-remove"></span>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="container user_items" *ngIf="current_item != null">
+      <table class="table" style="width: 545px">
+        <tr>
+          <th>Name</th>
+          <th>Sales Price</th>
+          <th>In Stock</th>
+          <th>Automated</th>
+        </tr>
+        <tr class="item">
+          <td>
+            {{current_item.name}}
+          </td>
+          <td>
+            {{current_item.sales_price}}
+          </td>
+          <td>
+            {{current_item.left_in_stock}}
+          </td>
+          <td>
+            <div *ngIf="current_item.automated">
+              <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
+            </div>
+            <div *ngIf="!current_item.automated">
+              <span class="glyphicon glyphicon-remove"></span>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <button class="btn btn-danger" (click)="removeSelectedItem()">Remove Item</button>
+      <!-- TODO: This would be where we show nutrition info -->
+    </div>
+  </div>
+  <form>
+    <div id="searchItem" class="form-group error">
+        <input type="text" class="form-control" name="item_name" [(ngModel)]="item_name" required />
+        <button class="btn btn-primary glypicon glyphicon-plus" (click)="searchUserItem()"></button>
+      <div class="list-control" id="listButtons">
+        <button id="saveButton" class="btn btn-primary" (click)="updateUserList()">Save List <span class="glyphicon glyphicon-save"></span></button>
+        <button id="deleteButton" *ngIf="!new_list" class="btn btn-danger" (click)="removeUserList()">Delete List <span class="glyphicon glyphicon-remove" ></span></button>
+        <button id="deleteButton" *ngIf="new_list" class="btn btn-danger" (click)="discardList()">Discard List <span class="glyphicon glyphicon-remove" ></span></button>
       </div>
-    </form>
-    <br /><br />
-    <button class="btn btn-primary list-control" (click)="updateUserList()">Save List <span class="glyphicon glyphicon-save"></span></button>
-    <button *ngIf="!new_list" class="btn btn-danger list-control" (click)="removeUserList()">Delete List <span class="glyphicon glyphicon-remove" ></span></button>
-    <button *ngIf="new_list" class="btn btn-danger list-control" (click)="discardList()">Discard List <span class="glyphicon glyphicon-remove" ></span></button>
-  </div>
-  <div class="row">
-    <flash-messages class="col-md-4"></flash-messages>
-  </div>
-  <div class="container user_items" *ngIf="curr_item_list.length != 0">
-    <table class="table" style="width: 545px">
-      <tr>
-        <th>Name</th>
-        <th>Sales Price</th>
-        <th>In Stock</th>
-        <th>Automated</th>
-      </tr>
-      <tr class="item" *ngFor="let ci of curr_item_list" (click)="addItemToList(ci)">
-        <td>
-          {{ci.name}}
-        </td>
-        <td>
-          {{ci.sales_price}}
-        </td>
-        <td>
-          {{ci.left_in_stock}}
-        </td>
-        <td>
-          <div *ngIf="ci.automated">
-            <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
-          </div>
-          <div *ngIf="!ci.automated">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="container user_items" *ngIf="current_item != null">
-    <table class="table" style="width: 545px">
-      <tr>
-        <th>Name</th>
-        <th>Sales Price</th>
-        <th>In Stock</th>
-        <th>Automated</th>
-      </tr>
-      <tr class="item">
-        <td>
-          {{current_item.name}}
-        </td>
-        <td>
-          {{current_item.sales_price}}
-        </td>
-        <td>
-          {{current_item.left_in_stock}}
-        </td>
-        <td>
-          <div *ngIf="current_item.automated">
-            <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
-          </div>
-          <div *ngIf="!current_item.automated">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <button class="btn btn-danger" (click)="removeSelectedItem()">Remove Item</button>
-    <!-- TODO: This would be where we show nutrition info -->
-  </div>
+    </div>
+  </form>
 </div>

@@ -22,7 +22,7 @@ export class ShoppingListComponent implements OnInit {
   new_list: boolean;
 
   constructor(private itemService: ItemService,
-              private flashMessage: FlashMessagesService,
+              // private flashMessage: FlashMessagesService,
               private authService: AuthService,
               private userService: UserService
   ) { }
@@ -44,7 +44,7 @@ export class ShoppingListComponent implements OnInit {
   searchUserItem() {
     if(this.item_name.length < 1) {
       console.log('No item to add');
-      this.flashMessage.show('Please input an item', {cssClass: 'alert-danger', timeout: 3000});
+      // this.flashMessage.show('Please input an item', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
     this.current_item = null;

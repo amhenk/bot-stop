@@ -1,3 +1,19 @@
+/** {
+  background-color: rgba(0,0,0,0.1);
+}*/
+form {
+  position: absolute;
+  display: inline-block;
+}
+table {
+  table-layout: fixed;
+  /*width: 300px;*/
+}
+
+th, td {
+  width:100px;
+}
+
 flash-messages {
   position: inherit;
   width: 200px;
@@ -19,45 +35,77 @@ input{
   width: 150px;
 }
 
+.container {
+  width: auto;
+}
+
+.page {
+  height:inherit;
+  overflow: hidden;
+}
+
 .item:hover{
   background-color: gray;
   color: white;
 }
 
-.form {
-  position: relative;
-  z-index: 10;
-  margin-bottom: auto;
-}
-
-.user_items{
+#user_items{
   position:absolute;
+  display: inline-block;
   float: right;
-  margin-left: 225px;
-  /*margin-top: -39px;*/
+  /*margin-left: 10px;*/
   overflow: auto;
 }
 
-.list-control {
-  display: inline;
-  position: relative;
-  margin-top: 10px;
+#user_items>table{
+  margin-left: 0px;
+}
+
+#user_items>*>td,th{
+  width:150px;
 }
 
 #searchItem {
   display: block;
   float: left;
+  /*margin-top: 370px;*/
+  margin-top: 10px;
+
+}
+
+#searchItem>input{
+  width: 375px;
+}
+
+#searchItem>button{
   width: 40px;
   height: 42px;
   margin: -1px -2px -2px;
 }
 
-#shopping-list {
-  position: absolute;
-  display: block;
+#searchItem>div.list-control{
+  display: inline;
+  margin-left: 160px;
+  width:auto;
 }
+
+#shopping-list {
+  /*position: absolute;*/
+  display: inline-block;
+  height: 360px;
+  width: 400px;
+  margin-left: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 #shopping-list.item {
   margin-bottom: 2px;
+}
+
+#listTable {
+  table-layout: auto;
+
 }
 
 #automated {
