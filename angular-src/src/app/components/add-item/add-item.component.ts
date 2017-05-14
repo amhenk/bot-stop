@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
 import { Item } from '../../models/item.model';
@@ -26,8 +25,8 @@ export class AddItemComponent implements OnInit {
   items: Item[] = [];
 
   constructor(private itemService: ItemService,
-              private router: Router,
-              private flashMessagesService: FlashMessagesService) {}
+              private router: Router
+            ) {}
               //private addItemForm: NgForm) { }
 
   ngOnInit() {
@@ -65,12 +64,10 @@ export class AddItemComponent implements OnInit {
 
     this.itemService.addItem(new_item).subscribe( data => {
       if(data.success){
-        this.flashMessagesService.show('Item added!', {cssClass: 'alert-success', timeout: 3000, fade: true});
         this.updateItems();
         this.clearForm();
       }
       else {
-        this.flashMessagesService.show('Item not added!', {cssClass: 'alert-danger', timeout: 3000, fade: true});
         console.log('Adding item failed');
       }
     });
