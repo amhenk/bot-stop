@@ -75,7 +75,7 @@
         <div id="shopping_list_module" *ngIf="displayShoppingList">
           <!-- <h1>Shopping List</h1> -->
           <!-- We need to turn this into it's own component -->
-          <shopping-list></shopping-list>
+          <shopping-list [shopping_list]="selectedShoppingList"></shopping-list>
         </div>
         <div id="schedule_order_module" *ngIf="displayCreateScheduledOrder">
           <h1>Schedule Order</h1>

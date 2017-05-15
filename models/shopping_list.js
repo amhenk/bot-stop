@@ -21,6 +21,10 @@ module.exports.addShoppingList = function(newList, callback) {
   newList.save(callback);
 }
 
+module.exports.getListById = function(id, callback) {
+  List.findById(id, callback);
+}
+
 module.exports.getListsByUserId = function(id, callback){
   console.log('Searching for id: ' + id);
   const query = {'userId': id};

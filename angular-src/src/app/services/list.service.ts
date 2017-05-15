@@ -26,6 +26,13 @@ export class ListService {
                     {headers: headers, search: {'user_id': user_id}}).map(res => res.json());
   }
 
+  getListById(list_id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'Application/json');
+    return this.http.get('http://localhost:8080/users/getListById',
+            {headers: headers, search: {'list_id': list_id}}).map(res => res.json());
+  }
+
 /****************************************
  * ETL type things
  ***************************************/

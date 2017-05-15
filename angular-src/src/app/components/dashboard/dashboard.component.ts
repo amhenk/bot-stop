@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
 
   user: User = new User();
   shoppingLists: ShoppingList[] = [];
+  selectedShoppingList: ShoppingList;
   orders: Order[];
   past_orders: Order[] = [];
   future_orders: Order[] = [];
@@ -109,7 +110,12 @@ export class DashboardComponent implements OnInit {
   }
 
   retrieveList(listId) {
-    console.log(listId);
+    this.listService.getListById(listId).subscribe(data => {
+      this.selectedShoppingList = data;
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
   retrieveOrder(orderId){

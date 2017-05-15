@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { Item } from '../../models/item.model';
@@ -22,7 +22,7 @@ export class ShoppingListComponent implements OnInit {
 
   curr_item_list: Item[];
   current_item: Item;
-  shopping_list: ShoppingList;
+  @Input()shopping_list: ShoppingList;
 
 
   constructor(private itemService: ItemService,
@@ -85,10 +85,6 @@ export class ShoppingListComponent implements OnInit {
         this.current_item = null;
       }
     }
-  }
-
-  retrieveList() {
-
   }
 
   updateUserList() {

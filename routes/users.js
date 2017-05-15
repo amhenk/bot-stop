@@ -17,12 +17,19 @@ router.get('/validate', (req, res, next) => {
 });
 
 router.get('/getUserLists', (req, res, next) => {
-  console.log(req.query);
   List.getListsByUserId(req.query.user_id, (err, lists) => {
     if(err) throw err;
 
     res.send(lists);
   });
+});
+
+router.get('/getListById', (req, res, next) => {
+  List.getListById(req.query.list_id, (err, list) => {
+    if(err) throw err;
+    console.log(list);
+    res.send(list);
+  })
 })
 
 // Register router
