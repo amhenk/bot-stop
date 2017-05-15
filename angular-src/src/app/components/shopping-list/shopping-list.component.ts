@@ -3,6 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { Item } from '../../models/item.model';
 import { User } from '../../models/user.model';
+import { ShoppingList } from '../../models/shopping_list.model';
 
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
@@ -16,10 +17,13 @@ import { ItemService } from '../../services/item.service';
 export class ShoppingListComponent implements OnInit {
   items: Item[] = [];
   item_name: String;
-  curr_item_list: Item[];
-  current_item: Item;
   list_name: String;
   new_list: boolean;
+
+  curr_item_list: Item[];
+  current_item: Item;
+  shopping_list: ShoppingList;
+
 
   constructor(private itemService: ItemService,
               // private flashMessage: FlashMessagesService,
@@ -28,17 +32,15 @@ export class ShoppingListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.shopping_list = new ShoppingList();
     this.new_list = true;
     this.item_name = 'Milk';
     this.curr_item_list = [];
     this.current_item = null;
     this.searchUserItem();
-    this.list_name = 'New Shopping List';
-    this.authService.getProfile().subscribe(user => {
-      this.userService.user = user.user;
-    }, err => {
-      throw err;
-    });
+    this.shopping_list.name = 'New Shopping List';
+    this.shopping_list.items = [];
+
   }
 
   searchUserItem() {
@@ -61,7 +63,7 @@ export class ShoppingListComponent implements OnInit {
   // TODO: Get Items from the current item list
   addItemToList(item){
     console.log('Adding item: ' + item);
-    this.items.push(item);
+    this.shopping_list.items.push(item);
     this.item_name = '';
 
     // Empty the searched items
@@ -77,9 +79,9 @@ export class ShoppingListComponent implements OnInit {
   }
 
   removeSelectedItem() {
-    for(var i = this.items.length - 1; i >= 0; i--) {
-      if(this.items[i] === this.current_item){
-        this.items.splice(i,1);
+    for(var i = this.shopping_list.items.length - 1; i >= 0; i--) {
+      if(this.shopping_list.items[i] === this.current_item){
+        this.shopping_list.items.splice(i,1);
         this.current_item = null;
       }
     }
@@ -87,7 +89,7 @@ export class ShoppingListComponent implements OnInit {
 
   updateUserList() {
     console.log('Updating list...');
-    this.userService.saveUserList({ 'item_list': {'name': this.list_name, 'items': this.items}})
+    this.userService.saveUserList(this.shopping_list)
       .subscribe(data => {
         console.log(data.msg);
       }, err => {
@@ -102,7 +104,7 @@ export class ShoppingListComponent implements OnInit {
   }
 
   discardList() {
-    this.items = [];
+    this.shopping_list.items = [];
   }
 
 }

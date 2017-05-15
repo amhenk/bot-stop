@@ -1,17 +1,17 @@
 <div class="page">
   <div id="listName" class="container">
     <h4><input style="width: auto;"
-      type="text" class="text-line" value="list_name" [(ngModel)]="list_name"/></h4>
+      type="text" class="text-line" value="shopping_list.name" [(ngModel)]="shopping_list.name"/></h4>
   </div>
   <div class="container" id="mainContent">
     <div id="shopping-list" class="container">
       <div class="container">
         <!-- The actual shopping list part  -->
-        <div *ngIf="items.length == 0">
+        <div *ngIf="shopping_list.items.length == 0">
           <p>No items in list.</p>
         </div>
-        <div *ngIf="items.length != 0">
-          <table id="listTable" *ngFor="let i of items" class="table table-hover">
+        <div *ngIf="shopping_list.items.length != 0">
+          <table id="listTable" *ngFor="let i of shopping_list.items" class="table table-hover">
             <tr class="item" (click)="displayItemInfo(i)" style="width: 120px; height: 36px;">
               <td style='width: 150px;'>
                 {{i.name}}

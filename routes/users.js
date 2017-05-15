@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const List = require('../models/shopping_list');
 
 // Profile
 router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, next) => {
@@ -73,13 +74,14 @@ router.post('/authenticate', (req, res, next) => {
 router.post('/updateList', (req, res, next) => {
   console.log('Hello!');
   console.log(req);
-  const itemList = req.body.item_list;
-  const user_id = req.query.user_id;
-  console.log(user_id);
-  User.addShoppingList(user_id, itemList, (err, user) => {
+  const itemList = new List(req.body.shopping_list);
+  // const user_id = req.query.user_id;
+  // console.log(user_id);
+  console.log(itemList);
+  List.addShoppingList(itemList, (err, list) => {
     if(err) throw err;
 
-    if(!user){
+    if(!list){
       console.log('List could not be added');
       return res.json({success: false, msg:'List could not be added'});
     }
