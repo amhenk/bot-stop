@@ -41,15 +41,10 @@
         </div>
         <div id="shopping_lists" class="container">
           <h4>Shopping List</h4>
-          <ul>
-            <li>
-              Sunday List
-            </li>
-            <li>
-              Essentials
-            </li>
+            <ul *ngFor="let sl of shoppingLists; let i=index" >
+              <a *ngIf="i<3" (click)="retrieveList(sl._id)">{{sl.name}}</a>
+            </ul>
             <a (click)="startNewList()">Create New List</a>
-          </ul>
         </div>
       </div>
       <div id="recommended_items" class="card">

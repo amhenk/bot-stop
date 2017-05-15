@@ -20,3 +20,9 @@ const List = module.exports = mongoose.model('ShoppingList', ListSchema);
 module.exports.addShoppingList = function(newList, callback) {
   newList.save(callback);
 }
+
+module.exports.getListsByUserId = function(id, callback){
+  console.log('Searching for id: ' + id);
+  const query = {'userId': id};
+  List.find(query, callback);
+}

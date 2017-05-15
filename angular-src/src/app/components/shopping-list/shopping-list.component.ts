@@ -6,7 +6,7 @@ import { User } from '../../models/user.model';
 import { ShoppingList } from '../../models/shopping_list.model';
 
 import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
+import { ListService } from '../../services/list.service';
 import { ItemService } from '../../services/item.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class ShoppingListComponent implements OnInit {
   constructor(private itemService: ItemService,
               // private flashMessage: FlashMessagesService,
               private authService: AuthService,
-              private userService: UserService
+              private listService: ListService
   ) { }
 
   ngOnInit() {
@@ -87,9 +87,13 @@ export class ShoppingListComponent implements OnInit {
     }
   }
 
+  retrieveList() {
+
+  }
+
   updateUserList() {
     console.log('Updating list...');
-    this.userService.saveUserList(this.shopping_list)
+    this.listService.saveUserList(this.shopping_list)
       .subscribe(data => {
         console.log(data.msg);
       }, err => {
@@ -100,7 +104,7 @@ export class ShoppingListComponent implements OnInit {
 
   removeUserList(list_name) {
     // TODO: Remove list from the current user
-    this.userService.removeUserList(this.list_name);
+    this.listService.removeUserList(this.list_name);
   }
 
   discardList() {

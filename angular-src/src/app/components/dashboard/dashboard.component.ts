@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { ListService } from '../../services/list.service';
 import { OrderService } from '../../services/order.service';
 import { ItemService } from '../../services/item.service';
 
 import { User } from '../../models/user.model';
 import { Order } from '../../models/order.model';
 import { Item } from '../../models/item.model';
+import { ShoppingList } from '../../models/shopping_list.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,11 +19,13 @@ import { Item } from '../../models/item.model';
 export class DashboardComponent implements OnInit {
 
   user: User = new User();
+  shoppingLists: ShoppingList[] = [];
   orders: Order[];
   past_orders: Order[] = [];
   future_orders: Order[] = [];
   temp: Order;
   order_items: Object[] = [];
+  private userid: String;
 
   /* Module Toggles */
   displayPastOrders: boolean = false;
@@ -34,14 +38,15 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private orderService: OrderService,
     private itemService: ItemService,
+    private listService: ListService,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile =>{
       this.user = profile.user;
-
-      this.orderService.getCustomerOrders(profile._id).subscribe(orders => {
+      // this.userid = profile._id;
+      this.orderService.getCustomerOrders(this.user._id).subscribe(orders => {
         this.orders = orders;
         this.orders.forEach( (s) => {
           if("pickup_date" in s){
@@ -67,6 +72,13 @@ export class DashboardComponent implements OnInit {
       err => {
           console.log(err);
           return false;
+      });
+
+      this.listService.getUserLists(profile.user._id).subscribe(lists => {
+        this.shoppingLists = lists;
+      }, err => {
+        console.log(err);
+        return false;
       });
     },
     err => {
@@ -94,6 +106,10 @@ export class DashboardComponent implements OnInit {
     this.setAllFalse();
     this.displayShoppingList = true;
     console.log("Whaddup");
+  }
+
+  retrieveList(listId) {
+    console.log(listId);
   }
 
   retrieveOrder(orderId){

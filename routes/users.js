@@ -16,6 +16,15 @@ router.get('/validate', (req, res, next) => {
   res.send('VALIDATE');
 });
 
+router.get('/getUserLists', (req, res, next) => {
+  console.log(req.query);
+  List.getListsByUserId(req.query.user_id, (err, lists) => {
+    if(err) throw err;
+
+    res.send(lists);
+  });
+})
+
 // Register router
 router.post('/register', (req, res, next) => {
   let newUser = new User({
