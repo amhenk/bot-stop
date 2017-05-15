@@ -33,13 +33,22 @@ export class ListService {
             {headers: headers, search: {'list_id': list_id}}).map(res => res.json());
   }
 
+  // Search by list name and user id so there isn't a mix up
+  getListByName(list_name) {
+    let headers = new Headers();
+    let search_params = {'list_name': list_name,'user_id': this.user._id};
+    headers.append('Content-Type', 'Application/json');
+    return this.http.get('http://localhost:8080/users/getListByName',
+            {headers: headers, search: search_params}).map(res => res.json());
+  }
+
 /****************************************
  * ETL type things
  ***************************************/
   saveUserList(userList) {
     userList.userId = this.user._id;
-    console.log(userList);
-    console.log('UserService items: ' + userList.items);
+    // TODO: Check if the list exists in the database, if it does, we update, else
+    //       we insert a new list.
     let headers = new Headers();
     let params: URLSearchParams = new URLSearchParams();
     headers.append('Content-Type', 'application/json');

@@ -23,6 +23,9 @@
                 <div *ngIf="i.automated">
                   <object id="automated" data="assets/icons/autocart_noun_358272_cc.svg" type="image/svg+xml">yup</object>
                 </div>
+                <div *ngIf="!i.automated">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </div>
               </td>
             </tr>
           </table>

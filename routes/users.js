@@ -88,12 +88,7 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 router.post('/updateList', (req, res, next) => {
-  console.log('Hello!');
-  console.log(req);
   const itemList = new List(req.body.shopping_list);
-  // const user_id = req.query.user_id;
-  // console.log(user_id);
-  console.log(itemList);
   List.addShoppingList(itemList, (err, list) => {
     if(err) throw err;
 
