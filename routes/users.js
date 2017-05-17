@@ -30,6 +30,16 @@ router.get('/getListById', (req, res, next) => {
     console.log(list);
     res.send(list);
   })
+});
+
+router.get('/getListByName', (req, res, next) => {
+  const userId = req.query.user_id;
+  const listName = req.query.list_name;
+  List.getListByName(userId, listName, (err, list) => {
+    if(err) throw err;
+    console.log(list);
+    res.send(list);
+  })
 })
 
 // Register router

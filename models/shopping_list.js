@@ -3,7 +3,8 @@ const config = require('../config/database');
 
 const ListSchema = mongoose.Schema({
   name: {
-    type: String
+    type: String,
+    unique: true  /* The shopping list name should be unique */
   },
   userId: {
     type: String,
@@ -25,8 +26,12 @@ module.exports.getListById = function(id, callback) {
   List.findById(id, callback);
 }
 
+module.exports.getListByName = function(userId, name, callback) {
+  const query = {'userId': userId, 'name': name};
+  List.findOne(query, callback);
+}
+
 module.exports.getListsByUserId = function(id, callback){
-  console.log('Searching for id: ' + id);
   const query = {'userId': id};
   List.find(query, callback);
 }
