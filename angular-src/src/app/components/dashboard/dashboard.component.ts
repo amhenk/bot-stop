@@ -110,6 +110,8 @@ export class DashboardComponent implements OnInit {
   }
 
   retrieveList(listId) {
+    this.setAllFalse();
+    this.displayShoppingList = true;
     this.listService.getListById(listId).subscribe(data => {
       this.selectedShoppingList = data;
     }, err => {
