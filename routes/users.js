@@ -99,7 +99,7 @@ router.post('/authenticate', (req, res, next) => {
 
 router.post('/updateList', (req, res, next) => {
   const itemList = new List(req.body.shopping_list);
-  List.addShoppingList(itemList, (err, list) => {
+  List.updateList(itemList, (err, list) => {
     if(err) throw err;
 
     if(!list){

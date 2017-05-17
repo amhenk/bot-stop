@@ -18,7 +18,7 @@ const ListSchema = mongoose.Schema({
 
 const List = module.exports = mongoose.model('ShoppingList', ListSchema);
 
-module.exports.addShoppingList = function(newList, callback) {
+module.exports.updateList = function(newList, callback) {
   newList.save(callback);
 }
 
