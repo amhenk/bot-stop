@@ -29,6 +29,7 @@ import { ListService } from './services/list.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DatePickerModule } from 'ng2-datepicker';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'additem', component: AddItemComponent},
   {path: 'place-order', component: PlaceOrderComponent},
+  {path: 'inventory', component: InventoryComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}
 ]
 @NgModule({
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     PlaceOrderComponent,
     DashboardComponent,
     ScheduleOrderComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
